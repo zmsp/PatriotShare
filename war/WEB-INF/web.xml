@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<servlet>
 		<servlet-name>PatriotShare</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.PatriotShareServlet</servlet-class>
@@ -12,6 +12,29 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>PatriotShare</servlet-name>
 		<url-pattern>/patriotshare</url-pattern>
 	</servlet-mapping>
+
+	
+	
+	<servlet>
+		<servlet-name>addBook</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.AddBookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addBook</servlet-name>
+		<url-pattern>/addbook</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>allBook</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.AllBookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>allBook</servlet-name>
+		<url-pattern>/allbook</url-pattern>
+	</servlet-mapping>
+
+
+
 	<welcome-file-list>
 		<welcome-file>jsp/index.jsp</welcome-file>
 	</welcome-file-list>
