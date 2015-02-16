@@ -33,9 +33,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Start Share <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Your List</a></li>
+                  <li><a href="#">My Profile</a></li>
+                  <li><a href="#">My Books</a></li>
                   <li><a href="#">Find Match</a></li>
-                  <li><a href="#">Your Profile</a></li>
                 </ul>
               </li>
             </ul>
