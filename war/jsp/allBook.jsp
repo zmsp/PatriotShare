@@ -63,7 +63,9 @@
 			
 		</div>
 
-		<jsp:include page="/fragments/footer.jsp" />
+		<div style="margin:5% 0 0 0 ">
+			<jsp:include page="/fragments/footer.jsp" />
+		</div>
 
 	</div>
 </body>
