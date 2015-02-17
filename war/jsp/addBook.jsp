@@ -4,9 +4,8 @@
 <!-- Import library and scripts are from this file -->
 <jsp:include page="/fragments/staticFiles.jsp" />
 <body>
+	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
-		<jsp:include page="/fragments/bodyHeader.jsp" />
-		<div>
 			<form action="/addbook" method="post">
 				<div class="form-group">
 					<label for="bookTitle">Book Title</label> 
@@ -37,6 +36,7 @@
 					<i class="icon-user icon-white"></i> Submit
 				</button>
 			</form>
+
 		</div>
 
 
@@ -44,7 +44,6 @@
 			<jsp:include page="/fragments/footer.jsp" />
 		</div>
 
-	</div>
 </body>
 
 </html>

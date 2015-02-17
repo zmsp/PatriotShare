@@ -7,16 +7,15 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-
+<link rel="stylesheet" href="/stylesheets/main.css"/>
 </head>
+
 <body>
 
-<div class="masthead">
-        <h3 class="text-muted">&nbsp; Patriot Share</h3>
-</div>        
-		<nav class="navbar navbar-default">
-        <div class="container-fluid">
+      
+<div class="navbar navbar-default navbar-static-top">
+	<a href='index.jsp' class='navbar-brand'>Patriot Share<i class='glyphicon glyphicon-book'></i></a>
+        <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -27,7 +26,6 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
               <li><a href="#">About</a></li>
               <li><a href="#">Contact</a></li>
               <li class="dropdown">
@@ -40,13 +38,11 @@
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li style="background-color:#DEB887"><a href="./">Log Out <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-static-top/">Static top</a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+              <li style="background-color:#CCC66C"><a href="./">Log Out <span class="sr-only">(current)</span></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-      </nav>
+      </div>
       
       <!-- Bootstrap core JavaScript
     ================================================== -->

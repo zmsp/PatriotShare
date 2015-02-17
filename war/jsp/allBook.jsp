@@ -8,8 +8,9 @@
 <jsp:include page="/fragments/staticFiles.jsp" />
 
 <body>
+	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
-		<jsp:include page="/fragments/bodyHeader.jsp" />
+	
 		
 		Booklist
 		
@@ -25,7 +26,7 @@
 
 				if (Books.isEmpty()) {
 			%>
-			<p>There are no topics defined.</p>
+			<p>There are no books listed.</p>
 			<%
 				} else {
 			%>
@@ -63,11 +64,15 @@
 			
 		</div>
 
+<<<<<<< Updated upstream
 		<div style="margin:5% 0 0 0 ">
 			<jsp:include page="/fragments/footer.jsp" />
 		</div>
+=======
+>>>>>>> Stashed changes
 
 	</div>
+	<jsp:include page="/fragments/footer.jsp" />
 </body>
 
 </html>
