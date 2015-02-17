@@ -1,21 +1,9 @@
-<html>
-<head>
-	<title>Navigation</title>
+<!-- You guys dont need to add imports or other html tags -->
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/stylesheets/main.css"/>
-</head>
-
-<body>
-
-      
 <div class="navbar navbar-default navbar-static-top">
-	<a href='index.jsp' class='navbar-brand'>Patriot Share<i class='glyphicon glyphicon-book'></i></a>
+	
         <div class="container">
+        <a href='index.jsp' class='navbar-brand'><i class='glyphicon glyphicon-book'></i> Patriot Share</a>
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -43,14 +31,3 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </div>
-      
-      <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-
-</body>
-</html>

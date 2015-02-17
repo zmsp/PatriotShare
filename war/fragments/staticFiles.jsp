@@ -8,10 +8,7 @@ PetClinic :: a Spring Framework demonstration
 <title>Patriot Share Project</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<link href="/stylesheets/main.css" rel="stylesheet" />
-
-
-
+<link href="/stylesheets/main.css" rel="stylesheet"/>
 </head>
 
 
