@@ -7,11 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
+
+import edu.gmu.mason.patriotshare.gae.db.Book;
 
 /**
  * Servlet implementation class AddBook
@@ -39,18 +36,21 @@ public class AddBookServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");
-		String ISBN = request.getParameter("ISBN");
-		String price = request.getParameter("price");
+		String isbn = request.getParameter("ISBN");
+		double price = Double.parseDouble(request.getParameter("price"));
 		
-		 if (ISBN==null ||ISBN.isEmpty()) {
+		 if (isbn==null ||isbn.isEmpty()) {
 			 throw new IOException("Add book error, empty isbn");
 			}
-		 DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		 Key bookKey = KeyFactory.createKey("Book", ISBN);
-		 Entity book = new Entity(bookKey);
-		 book.setProperty("title", title);
-		 book.setProperty("price", price);
-		 datastore.put(book);
+		 
+		 if (title==null ||title.isEmpty()) {
+			 throw new IOException("Add book error, empty title");
+			}
+		 if (price<=0) {
+			 throw new IOException("Not a valid price");
+			}
+		 
+		 Book.createBook(isbn, title, price);
 		 response.sendRedirect("/jsp/allBook.jsp");
 		 
 	}
