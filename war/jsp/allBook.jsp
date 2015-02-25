@@ -43,7 +43,7 @@
 					<th>Book Title</th>
 					<th>ISBN</th>
 					<th>Price</th>
-					<th>Add</th>
+					<th>Edit</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -54,6 +54,7 @@
 									out.print("<td>" + Book.getProperty("title") + "</td>");
 									out.print("<td>" + Book.getProperty("isbn") + "</td>");
 									out.print("<td>" + Book.getProperty("price") + "</td>");
+									out.print("<td><a href=\"#\" class=\"btn btn-info\">Edit</a></td>");
 									out.print("</tr>");
 
 								}
