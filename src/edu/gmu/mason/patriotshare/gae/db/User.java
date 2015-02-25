@@ -1,15 +1,25 @@
 package edu.gmu.mason.patriotshare.gae.db;
 import com.google.appengine.api.datastore.Key;
 
-
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
 @PersistenceCapable
-public class User {
+public class User extends HttpServlet {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
@@ -58,5 +68,33 @@ public class User {
         this.email = email;
     }
     
-    
+/* Retrieving user input data from .jsp page (Yet to be created)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		String userName = request.getParameter("Username");
+		if (userName==null||userName.isEmpty()){
+			throw new IOException("Username field is empty");
+		}
+*/
+public static Key getKey(String userID){
+	Key userKey = KeyFactory.createKey("USERID", userID);
+	return userKey;
 }
+    
+/* Creating Data store entity for user
+ * Still need to add input validation */	
+public static Entity createUser(Key key, String firstName, String lastName, String email) {
+	Entity user = null;
+	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	
+	user = new Entity(key);
+	user.setProperty("FNAME", firstName);
+	user.setProperty("LNAME", lastName);
+	user.setProperty("EMAIL", email);
+	datastore.put(user);
+	return user;	
+	}
+
+}   
+    
+
