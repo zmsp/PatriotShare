@@ -17,6 +17,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Transaction;
 
 @PersistenceCapable
 public class User extends HttpServlet {
@@ -77,7 +78,8 @@ public class User extends HttpServlet {
 		}
 */
 public static Key getKey(String userID){
-	Key userKey = KeyFactory.createKey("USERID", userID);
+	long id = Long.parseLong(userID);
+	Key userKey = KeyFactory.createKey("USERID", id);
 	return userKey;
 }
     
@@ -87,12 +89,23 @@ public static Entity createUser(Key key, String firstName, String lastName, Stri
 	Entity user = null;
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	
-	user = new Entity(key);
-	user.setProperty("FNAME", firstName);
-	user.setProperty("LNAME", lastName);
-	user.setProperty("EMAIL", email);
-	datastore.put(user);
-	return user;	
+	Transaction txn = datastore.beginTransaction();
+	try {
+	
+		user = new Entity(key);
+		user.setProperty("FNAME", firstName);
+		user.setProperty("LNAME", lastName);
+		user.setProperty("EMAIL", email);
+		datastore.put(user);
+		txn.commit();
+	} finally {
+		if (txn.isActive()) {
+			txn.rollback();
+
+		}
+	}
+		return user;	
+	
 	}
 
 }   
