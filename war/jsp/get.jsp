@@ -10,7 +10,9 @@
 	
 	
 	
-	<h2>You will save :$ ${price}</h2>
+	<h4>You will save</h4>
+	
+	<h1><p class="text-success">$${price}</p></h1>
 	
 	
 	
