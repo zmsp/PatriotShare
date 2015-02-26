@@ -13,8 +13,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/patriotshare</url-pattern>
 	</servlet-mapping>
 
-	
-	
+
+
 	<servlet>
 		<servlet-name>addBook</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.AddBookServlet</servlet-class>
@@ -23,7 +23,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>addBook</servlet-name>
 		<url-pattern>/addbook</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>allBook</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.AllBookServlet</servlet-class>
@@ -33,14 +33,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/allbook</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>trade</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.TradeBookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>trade</servlet-name>
+		<url-pattern>/trade/*</url-pattern>
+	</servlet-mapping>
 
 
 	<welcome-file-list>
 		<welcome-file>jsp/index.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<error-page>
-	    <error-code>500</error-code>
+		<error-code>500</error-code>
 		<exception-type>java.lang.Throwable</exception-type>
 		<location>/jsp/error.jsp</location>
 	</error-page>

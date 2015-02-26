@@ -26,3 +26,5 @@ local.properties
 .target
 # TeXlipse plugin
 .texlipse
+war/WEB-INF/appengine-generated/datastore-indexes-auto.xml
+war/WEB-INF/appengine-generated/datastore-indexes-auto.xml
