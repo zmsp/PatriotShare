@@ -7,10 +7,10 @@
 <body>
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
-	Add Content here
 	
 	
-	You will help someone save :$ ${price}
+	
+	<h2>You will help someone save :$ ${price}</h2> 
 	
 	
 	
