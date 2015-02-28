@@ -37,6 +37,7 @@ public class TradeBookServlet extends HttpServlet {
 		String isbn = request.getParameter("isbn"); 
 		Entity e= Book.getBookWithISBN(isbn);
 		request.setAttribute("price",e.getProperty("price").toString());
+		request.setAttribute("isbn", e.getProperty("isbn").toString());
 		request.getRequestDispatcher("/jsp/trade.jsp").forward(request, response); 
 		//response.sendRedirect("/jsp/allBook.jsp");
 	}
@@ -45,7 +46,7 @@ public class TradeBookServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		 response.sendRedirect("/jsp/allBook.jsp");
 		 
 	}
