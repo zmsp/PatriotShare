@@ -18,17 +18,14 @@
 	<div class="container">
 	
 	
-0538745843
+
 	
 	
 
-	<h2>Look at how much you could save if you trade with this user!</h2> 
-	
-<<<<<<< Updated upstream
-	<h4>You will help someone save</h4>
-	
-	<h1><p class="text-success">$${price}</p></h1>
-=======
+
+		
+
+
 		<%
 		URL url = new URL("http://isbndb.com/api/v2/json/0ee0g43m/prices/" + request.getAttribute("isbn"));
 		URLConnection urlConn = url.openConnection(); 
@@ -61,22 +58,33 @@
 				k--; 
 			}
 		}
->>>>>>> Stashed changes
+
 	
 	%>
+	<div class="row">
+		<h2>Trade one of your books for theirs. It's as simple as that.</h2> 
+	</div>
+	
+	<div class=" row col-sm-12 well">
+	<p>Compared to the competitors, you could potentially save <b><span class="text-success">$<%out.print(books.get(0).getPrice()); %> </span></b>by trading!</p>
+	<button type="trade" class="btn btn-primary" disabled="disabled">
+				<i class="icon-user icon-white"></i> Trade Now!
+	</button>
+	</div>
+	
 	<div class="row"> 
-		<div class="col-sm-3 well col-sm-offset-1"> 
-			<p><b><%out.print(books.get(0).getName()); %></b>
+		<div class="col-sm-3 well"> 
+			<p class="lead"><b><%out.print(books.get(0).getName()); %>.com</b><br/>
 			<%out.print("$" + books.get(0).getPrice());  %>
 			</p>
 		</div>
 		<div class="col-sm-3 well col-sm-offset-1"> 
-			<p><b><%out.print(books.get(1).getName()); %></b>
+			<p class="lead"><b><%out.print(books.get(1).getName()); %>.com</b><br/>
 			<%out.print("$" + books.get(1).getPrice());  %>
 			</p>
 		</div>
 		<div class="col-sm-3 well col-sm-offset-1"> 
-			<p><b><%out.print(books.get(2).getName()); %></b>
+			<p class="lead"><b><%out.print(books.get(2).getName()); %>.com</b><br/>
 			<%out.print("$" + books.get(2).getPrice());  %>
 			</p>
 		</div>
