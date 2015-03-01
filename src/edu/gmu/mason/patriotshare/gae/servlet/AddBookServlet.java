@@ -50,7 +50,8 @@ public class AddBookServlet extends HttpServlet {
 			 throw new IOException("Not a valid price");
 			}
 		 
-		 Book.createBook(isbn, title, price);
+			 Book.createBook(isbn, title, price);
+		 
 		 response.sendRedirect("/jsp/allBook.jsp");
 		 
 	}

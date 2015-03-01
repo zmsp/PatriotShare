@@ -16,9 +16,8 @@
 					<br />
 					<br /> Get started today and see how much you can save!
 				</p>
-				<a class="btn btn-primary" href="/addbook" role="button">Add
-					Book</a> <a class="btn btn-primary" href="/allbook" role="button">View
-					Book</a>
+				<a class="btn btn-primary" href="/addbook" role="button">Sell A Book</a> 
+				<a class="btn btn-primary" href="/allbook" role="button">Buy A Book</a>
 			</div>
 
 		</div>

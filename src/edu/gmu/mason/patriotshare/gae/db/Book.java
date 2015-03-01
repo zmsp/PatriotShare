@@ -182,11 +182,12 @@ public final class Book {
 				.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
 		try {
-
-			if (!checkIsbn(isbn)) {
+			//Multiple isbn are allowed
+			/*if (!checkIsbn(isbn)) {
 				return null;
 
-			}
+			}*/
+			
 
 			book = getBookWithISBN(isbn);
 			if (book != null) {

@@ -14,16 +14,16 @@
 			</div>
 
 			<div class="form-group">
-				<label for="bookISBN">Book ISBN</label> <input name="ISBN"
+				<label for="bookISBN">Book ISBN (10 or 13 digit)</label> <input name="ISBN"
 					type="text" class="form-control" id="bookISBN"
-					placeholder="Book ISBN goes here">
+					placeholder="Book ISBN goes here" pattern="\d{10}|\d{13}">
 			</div>
 			<div class="form-group">
-				<label for="bookPrice">Price</label>
+				<label for="bookPrice">Price (0.00-999)</label>
 				<div class="input-group">
 					<div class="input-group-addon">$</div>
-					<input name="price" type="text" class="form-control" id="bookPrice"
-						placeholder="Amount">
+					<input name="price" type="number" class="form-control" id="bookPrice"
+						placeholder="Amount" min="0" max="500" >
 					<div class="input-group-addon">.00</div>
 				</div>
 			</div>

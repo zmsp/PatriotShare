@@ -1,6 +1,7 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page import="com.google.appengine.api.datastore.*"%>
 <%@ page import="java.util.List"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +43,7 @@
 				<tr>
 					<th>Book Title</th>
 					<th>ISBN</th>
-					<th>Price</th>
+					<th>Asking Price</th>
 					<th>Trade</th>
 					<th>Get</th>
 				</tr>
@@ -56,7 +57,8 @@
 							
 									out.print("<td>" + Book.getProperty("title") + "</td>");
 									out.print("<td>" + Book.getProperty("isbn") + "</td>");
-									out.print("<td>" + Book.getProperty("price") + "</td>");
+									DecimalFormat df = new DecimalFormat("0.00");
+									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
 									out.print("<td><a href=\"\\trade\\?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
 									out.print("<td><a href=\"\\get\\?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Get</a></td>");
 									out.print("</tr>");
