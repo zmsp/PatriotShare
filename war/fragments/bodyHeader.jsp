@@ -17,8 +17,8 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Start Here <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="/addBook">Sell A Book</a></li>
-                  <li><a href="/allBook">Buy A Book</a></li>
+                  <li><a href="/addbook">Sell A Book</a></li>
+                  <li><a href="/allbook">Buy A Book</a></li>
                   <li class="disabled"><a href='#'>Find A Match</a></li>
                   <li class="disabled"><a href='#'>My Profile</a></li>
 

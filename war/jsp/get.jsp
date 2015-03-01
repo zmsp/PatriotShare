@@ -58,7 +58,7 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Language</strong></span> ${language}</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">How much will you save?</strong></span> <a href="/trade/?isbn=${isbn}" class="btn btn-primary ">Research</a></li>
+							class="">How much will you save?</strong></span> <a href="/research/?isbn=${isbn}" class="btn btn-primary ">Research</a></li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Buy this book?</strong></span> <a href="/trade/?isbn=${isbn}" class="btn btn-success">Trade</a></li>
 

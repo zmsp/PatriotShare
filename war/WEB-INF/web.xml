@@ -51,7 +51,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>get</servlet-name>
 		<url-pattern>/get/*</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>research</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.ResearchBookServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>research</servlet-name>
+		<url-pattern>/research/*</url-pattern>
+	</servlet-mapping>
 
 
 	<welcome-file-list>
