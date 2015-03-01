@@ -14,14 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-
-import org.json.*;
-
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 import edu.gmu.mason.patriotshare.gae.db.Book;
 
@@ -52,9 +50,11 @@ public class GetBookServlet extends HttpServlet {
 		
 		
 		
+		
+		
 		//GET JSON DATA
-		String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
-	    
+		String urlString = "https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn+"&key=AIzaSyB2BmUKAIUC4oxQtpsogJhQK2L2Otnv4y4&country=US";
+	    //https://www.googleapis.com/books/v1/volumes?q=isbn:9781118087886&key=AIzaSyB2BmUKAIUC4oxQtpsogJhQK2L2Otnv4y4&country=US
 	    URL url = new URL(urlString);
 	 
 	    // read from the URL
@@ -64,6 +64,7 @@ public class GetBookServlet extends HttpServlet {
 	        str += scan.nextLine();
 	    scan.close();
 	    
+	    request.setAttribute("data", str);
 	    
 	 
 	    // build a JSON object
@@ -115,7 +116,8 @@ public class GetBookServlet extends HttpServlet {
 	    }
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			throw new IOException("Book information not found");
+			
+			throw new IOException(e1.toString());
 		}
 		request.getRequestDispatcher("/jsp/get.jsp").forward(request, response); 
 	}

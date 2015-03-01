@@ -18,7 +18,6 @@
 <body>
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
-
 		<div class="col-md-8">
 
 			<div class="panel panel-info">
