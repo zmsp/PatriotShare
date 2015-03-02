@@ -59,8 +59,8 @@
 									out.print("<td>" + Book.getProperty("isbn") + "</td>");
 									DecimalFormat df = new DecimalFormat("0.00");
 									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
-									out.print("<td><a href=\"\\trade\\?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
-									out.print("<td><a href=\"\\get\\?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Get</a></td>");
+									out.print("<td><a href=\"/trade/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
+									out.print("<td><a href=\"/get/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Get</a></td>");
 									out.print("</tr>");
 
 								}

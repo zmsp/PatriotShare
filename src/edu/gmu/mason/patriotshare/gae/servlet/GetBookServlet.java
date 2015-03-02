@@ -14,11 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 import edu.gmu.mason.patriotshare.gae.db.Book;
@@ -93,6 +95,13 @@ public class GetBookServlet extends HttpServlet {
 	    String publishedDate =
 		        res.getJSONObject("volumeInfo").getString("publishedDate");
 	    String thumbnail=  res.getJSONObject("volumeInfo").getJSONObject("imageLinks").getString("thumbnail");
+	    
+	    JSONArray isbnArray = res.getJSONObject("volumeInfo").getJSONArray("industryIdentifiers");
+	    
+	    String isbn10 = isbnArray.getJSONObject(0).getString("identifier");
+	    String isbn13 = isbnArray.getJSONObject(1).getString("identifier");
+	    String pageCount = res.getJSONObject("volumeInfo").getString("pageCount");
+	    String language = res.getJSONObject("volumeInfo").getString("language");
 	   
 	    request.setAttribute("description",description);
 	    request.setAttribute("title",title);
@@ -100,14 +109,10 @@ public class GetBookServlet extends HttpServlet {
 	    request.setAttribute("publisher",publisher);
 	    request.setAttribute("publishedDate",publishedDate);
 	    request.setAttribute("thumbnail",thumbnail);
-	    
-	    request.setAttribute("isbn10","TODO");
-
-	    request.setAttribute("isbn13","TODO");
-
-	    request.setAttribute("pageCount","TODO");
-
-	    request.setAttribute("language","TODO");
+	    request.setAttribute("isbn10",isbn10);
+	    request.setAttribute("isbn13",isbn13);
+	    request.setAttribute("pageCount",pageCount);
+	    request.setAttribute("language",language);
 	    
 	    request.setAttribute("url",urlString);
 
