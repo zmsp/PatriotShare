@@ -27,14 +27,27 @@
 
 
 		<%
-		URL url = new URL("http://isbndb.com/api/v2/json/0ee0g43m/prices/" + request.getAttribute("isbn"));
-		URLConnection urlConn = url.openConnection(); 
-		urlConn.setConnectTimeout(15000); 
-		InputStream is = url.openStream();
-		JsonReader rdr = Json.createReader(is); 
-		
-		JsonObject obj = rdr.readObject(); 
-		JsonArray results = obj.getJsonArray("data"); 
+		InputStream is = null; 
+		JsonArray results = null; 
+		try
+		{
+			URL url = new URL("http://isbndb.com/api/v2/json/0ee0g43m/prices/" + request.getAttribute("isbn"));
+			URLConnection urlConn = url.openConnection(); 
+			urlConn.setConnectTimeout(30000); 
+			urlConn.setReadTimeout(30000); 
+			is = urlConn.getInputStream(); 
+			JsonReader rdr = Json.createReader(is); 
+			JsonObject obj = rdr.readObject(); 
+			results = obj.getJsonArray("data"); 		
+		}catch(SocketTimeoutException e)
+		{
+			e.printStackTrace(); 
+			
+		}finally
+		{
+			is.close(); 	
+		}
+					
 		
 		ArrayList<BookPrices> books = new ArrayList<BookPrices>(); 
 		
