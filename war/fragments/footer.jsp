@@ -2,6 +2,8 @@
 <!-- Site footer -->
 
     <!-- Style imported from stylesheets/main.css-->
+    <!--  -->
+    
     <footer class="footer">
       <div class="container">
         <p>Copyright &copy; 2015 PatriotShare. All rights reserved.</p>

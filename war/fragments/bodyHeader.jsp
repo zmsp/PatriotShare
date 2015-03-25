@@ -29,7 +29,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <!--<li style="background-color:#CCC66C" active><a href="./">Sign up <span class="sr-only">(current)</span></a></li>-->
-              <li style="background-color:#CCC66C" active><a href="logOut.jsp">Log Out <span class="sr-only">(current)</span></a></li>
+              <li style="background-color:#CCC66C" active><a href="/jsp/user.jsp">Sign Up<span class="sr-only">(current)</span></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
