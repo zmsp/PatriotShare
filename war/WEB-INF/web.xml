@@ -41,15 +41,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>trade</servlet-name>
 		<url-pattern>/trade/*</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-	<servlet-name>profile</servlet-name>
-	<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.ProfileServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>profile</servlet-name>
-		<url-pattern>/profile/</url-pattern>
-	</servlet-mapping>
 
 	
 	<servlet>
