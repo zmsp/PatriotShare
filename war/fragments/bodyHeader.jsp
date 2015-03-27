@@ -28,7 +28,7 @@
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <!--<li style="background-color:#CCC66C" active><a href="./">Sign up <span class="sr-only">(current)</span></a></li>-->
+              <li style="background-color:#CCC66C" active><a href="/jsp/login.jsp">Log In<span class="sr-only">(current)</span></a></li>
               <li style="background-color:#CCC66C" active><a href="/jsp/user.jsp">Sign Up<span class="sr-only">(current)</span></a></li>
             </ul>
           </div><!--/.nav-collapse -->
