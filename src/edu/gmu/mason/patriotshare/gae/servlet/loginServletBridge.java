@@ -40,7 +40,7 @@ public class loginServletBridge extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("/jsp/login.jsp");
+		response.sendRedirect("/jsp/user.jsp");
 		//Not used since sent via POST
 	}
 
@@ -64,7 +64,7 @@ public class loginServletBridge extends HttpServlet {
 		 //if not, then create the account.
 			try {
 
-				//The "email" is the column we are searching and filtering our results on
+				//The "username" is the column we are searching and filtering our results on
 				Filter hasUsername = new FilterPredicate("username", FilterOperator.EQUAL, username);
 				
 				//"User" is the entity to search
