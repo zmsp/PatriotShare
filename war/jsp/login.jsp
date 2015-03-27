@@ -10,7 +10,7 @@
 		<div class='row'>
 			<div class='col-sm-6 well '>
 <h1 class="text-success">PatriotShare | Login</h1>
-<h4>Login with user <em>Username</em> & <em>Password</em> and your ready to go!</h4>
+<h4>Login with your <em>Username</em> & <em>Password</em> and you're ready to go!</h4>
 
 
 <form action="/addbook" method="post">
