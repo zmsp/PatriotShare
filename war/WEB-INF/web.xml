@@ -12,8 +12,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>PatriotShare</servlet-name>
 		<url-pattern>/patriotshare</url-pattern>
 	</servlet-mapping>
-
-
+    <servlet>
+		<servlet-name>getBookInfo</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.getBookInfo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getBookInfo</servlet-name>
+		<url-pattern>/getBookInfo</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>addBook</servlet-name>

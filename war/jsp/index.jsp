@@ -19,7 +19,7 @@
 				</h4>
 				<br >
 				<a class="btn btn-primary" href="/addbook" role="button">Sell A Book</a> 
-				<a class="btn btn-primary" href="/allbook" role="button">Buy A Book</a>
+				<a class="btn btn-primary" href="/jsp/findBook.jsp" role="button">Find A Book</a>
 			</div>
 
 		</div>
