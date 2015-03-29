@@ -39,7 +39,7 @@ public class UserProfile {
 	//
 	// SECURITY
 	//
-	
+
 	/**
 	 * Private constructor to avoid instantiation.
 	 */
@@ -79,26 +79,9 @@ public class UserProfile {
 		return Long.toString(adminProfile.getKey().getId());
 	}
 	
-	//
-	// NAME
-	//
+
 	
-	/**
-	 * The property name for the <b>name</b> of the admin profile.
-	 */
-	private static final String NAME_PROPERTY = "name";
-	
-	/**
-	 * Return the name of the admin profile. 
-	 * @param adminProfile The GAE Entity storing the admin profile.
-	 * @return the admin profile of the campus. 
-	 */
-	public static String getName(Entity adminProfile) {
-		Object name = adminProfile.getProperty(NAME_PROPERTY);
-		if (name == null) name = "";
-		return (String)name;
-	}
-	
+
 	/**
 	 * The regular expression pattern for the name of the admin profile.
 	 */
@@ -141,21 +124,32 @@ public class UserProfile {
 	/**
 	 * Create a new admin profile if the login ID is correct and none exists with this id.
 	 * @param loginID The id for this admin.
+	 * @param notification 
+	 * @param terms 
+	 * @param password 
+	 * @param email 
+	 * @param lastName 
 	 * @return the Entity created with this id or null if error
 	 */
-	public static Entity createAdminProfile(String loginID) {
+	public static Entity createProfile(String firstName, String lastName, String email, String password, String terms, String notification) {
 		Entity adminProfile = null;
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
 		try {
 		
-			adminProfile = getAdminProfileWithLoginID(loginID);
+			adminProfile = getAdminProfileWithLoginID(email);
 			if (adminProfile!=null) {
 				return null;
 			}
 			
 			adminProfile = new Entity(ENTITY_KIND);
-			adminProfile.setProperty(LOGIN_ID_PROPERTY, loginID);
+			adminProfile.setProperty(LOGIN_ID_PROPERTY, email);
+			
+			adminProfile.setProperty("password", password);
+			adminProfile.setProperty("lastName", lastName);
+			adminProfile.setProperty("firstName", firstName);
+			adminProfile.setProperty("terms", terms);
+			adminProfile.setProperty("notification", notification);
 			datastore.put(adminProfile);
 
 		    txn.commit();
@@ -242,7 +236,7 @@ public class UserProfile {
 		Entity adminProfile = null;
 		try {
 			adminProfile = getAdminProfile(adminProfileID);
-			adminProfile.setProperty(NAME_PROPERTY, name);
+			adminProfile.setProperty("firstNane", name);
 			adminProfile.setProperty(LOGIN_ID_PROPERTY, loginID);
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			datastore.put(adminProfile);
