@@ -35,7 +35,9 @@ import com.google.appengine.api.users.User;
  * - "rights" a serializable {@link AdminRights} data structure<br>
  */
 public class UserProfile {
-	
+	private static String[] booktitlelist = new String[20]; //Temporarily static for testing 
+	private static String[] bookisbnlist = new String[20]; //Temporarily static for testing
+	private static boolean [] booklistarraytracker = new boolean [20]; //Temporarily static for testing
 	//
 	// SECURITY
 	//
@@ -44,6 +46,7 @@ public class UserProfile {
 	 * Private constructor to avoid instantiation.
 	 */
 	private UserProfile() {
+ 
 	}
 	
 	//
@@ -305,6 +308,25 @@ public class UserProfile {
 	
 	public static boolean isAdminProfile(User user) {
 		return getAdminProfile(user)!=null;
+	}
+	
+	public static void addtobooklist(String isbn, String title){ //Temporarily static for testing
+		for (int i = 0; i < booklistarraytracker.length; i++ ) {
+			if (booklistarraytracker[i] =! true){
+				booklistarraytracker[i] = true;
+				booktitlelist[i] = title;
+				bookisbnlist [i] = isbn;
+				break;
+			}
+		}
+	}
+	
+	public static void Testbooklist(){ 
+		for (int i = 0; i < booklistarraytracker.length; i++ ){
+			if (booklistarraytracker[i] == true){
+				System.out.println("Entry: "+i+"  Book Title: "+booktitlelist[i]+"  Isbn: "+bookisbnlist[i]);
+			}
+		}
 	}
 	
 }

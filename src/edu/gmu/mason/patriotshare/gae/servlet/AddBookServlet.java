@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import edu.gmu.mason.patriotshare.gae.db.Book;
+import edu.gmu.mason.patriotshare.gae.db.UserProfile;
 
 /**
  * Servlet implementation class AddBook
@@ -51,7 +52,8 @@ public class AddBookServlet extends HttpServlet {
 			}
 		 
 			 Book.createBook(isbn, title, price);
-		 
+			 UserProfile.addtobooklist(isbn, title);
+			 UserProfile.Testbooklist();
 		 response.sendRedirect("/jsp/allBook.jsp");
 		 
 	}
