@@ -13,7 +13,7 @@
 <h4>Login with your <em>Username</em> & <em>Password</em> and you're ready to go!</h4>
 
 
-<form action="/addbook" method="post">
+<form action="/login" method="post">
 			<div class="form-group">
 				<label for="username">Username:</label> <input type="text"
 					class="form-control" id="username" placeholder="jone doe"
