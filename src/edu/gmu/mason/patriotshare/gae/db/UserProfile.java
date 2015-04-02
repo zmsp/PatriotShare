@@ -8,6 +8,7 @@ package edu.gmu.mason.patriotshare.gae.db;
  * Authors: 
  */
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,13 +35,23 @@ import com.google.appengine.api.users.User;
  * - "loginID" a {@link String} with the login ID of the admin (one of these, in this order: user id, email, external Open ID) <br>
  * - "rights" a serializable {@link AdminRights} data structure<br>
  */
-public class UserProfile {
+
+
+
+
+public class UserProfile implements Serializable {
+	
 	private static String[] booktitlelist = new String[20]; //Temporarily static for testing 
 	private static String[] bookisbnlist = new String[20]; //Temporarily static for testing
 	private static boolean [] booklistarraytracker = new boolean [20]; //Temporarily static for testing
 	//
 	// SECURITY
 	//
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Private constructor to avoid instantiation.
