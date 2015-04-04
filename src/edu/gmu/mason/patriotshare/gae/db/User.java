@@ -45,17 +45,18 @@ public class User extends HttpServlet {
 	private String terms;
 	
 	@Persistent
+	private double rating;
+	
+	@Persistent
 	private String notification;
+	
 
-	public User(String firstName, String lastName, String email, String password, String terms, String notification) {
+	public User(String firstName, String lastName, String email, String password, double rating) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.terms = terms;
-		this.notification = notification;
-		
-
+		this.rating = rating;
 	}
 
 	// Accessors for the fields. JDO doesn't use these, but your application
@@ -105,7 +106,7 @@ public class User extends HttpServlet {
 	/*
 	 * Creating Data store entity for user Still need to add input validation
 	 */
-	public static Entity createUser(String firstName, String lastName, String email, String password, String terms, String notification) {
+	public static Entity createUser(String firstName, String lastName, String email, String password, double rating) {
 		Entity user = null;
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -118,8 +119,9 @@ public class User extends HttpServlet {
 			user.setProperty("lastName", lastName);
 			user.setProperty("email", email);
 			user.setProperty("password", password);
-			user.setProperty("terms", terms);
-			user.setProperty("notification", notification);
+			//user.setProperty("terms", terms);
+			//user.setProperty("notification", notification);
+			user.setProperty("rating", rating);
 			datastore.put(user);
 			txn.commit();
 		} finally {

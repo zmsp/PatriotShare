@@ -12,59 +12,55 @@
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
 
-
-		<h3>My Book List:</h3>
-
+		<h3>Matched Results:</h3>
 		<div>
 			<%
-				DatastoreService datastore = DatastoreServiceFactory
-							.getDatastoreService();
-					Query query = new Query("Book");
-					List<Entity> Books = datastore.prepare(query).asList(
-							FetchOptions.Builder.withLimit(100));
-
+				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+					Query queryBook = new Query("Book");
+					Query queryUser = new Query("User");
+					List<Entity> Books = datastore.prepare(queryBook).asList(FetchOptions.Builder.withLimit(100));
+					List<Entity> Users = datastore.prepare(queryUser).asList(FetchOptions.Builder.withLimit(100));
 					if (Books.isEmpty()) {
 			%>
-			<p>There are no books listed.</p>
+			<p>Sorry, currently there are no matches :-(</p>
 			<%
 				} else {
 			%>
-
-
 			
 			<table id="example" class="display">
 				<thead>
 				<tr>
-					<th>Book Title</th>
-					<th>ISBN</th>
-					<th>Asking Price</th>
-					<!--<th>Trade</th> -->
-					<!--<th>Get</th>  -->
+					<th>User Name</th>
+					<th>Rating</th>
+					<th>Price</th>
+					<th>Trade</th>
+					<th>Buy</th>
 				</tr>
 				</thead>
 				<tbody>
 				<%
-				
 					for (Entity Book : Books) {
-									out.print("<tr>");
-									String s= Book.getProperty("price").toString();
+						
+						if(request.getParameter("isbn").equals(Book.getProperty("isbn"))) {
 							
-									out.print("<td>" + Book.getProperty("title") + "</td>");
-									out.print("<td>" + Book.getProperty("isbn") + "</td>");
-									DecimalFormat df = new DecimalFormat("0.00");
-									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
-									//out.print("<td><a href=\"/trade/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
-									//out.print("<td><a href=\"/get/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Get</a></td>");
-									out.print("</tr>");
-
-								}
-							}
+						
+							out.print("<tr>");
+							out.print("<td>" + Book.getProperty("userid") + "</td>");
+							out.print("<td> 3.10 </td>");
+							String p = Book.getProperty("price").toString();
+							DecimalFormat df = new DecimalFormat("0.00");
+							out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
+							out.print("<td><a href=\"/tradeConfirmation/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
+							out.print("<td><a href=\"#" + "\"class=\"btn btn-info\">Buy</a></td>");
+							out.print("</tr>");
+						}	
+					}
+				}
 				%>
 				</tbody>
 			</table>
 
 		</div>
-
 
 	</div>
 	<jsp:include page="/fragments/footer.jsp" />

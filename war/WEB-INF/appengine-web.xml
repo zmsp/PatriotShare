@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-  <application>ait390s1501-patriotshare</application>
+  <application>ait390s1501-ps-nazira</application>
   <version>1</version>
 
   <!--

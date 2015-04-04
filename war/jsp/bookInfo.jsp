@@ -40,7 +40,7 @@
 							class="">ISBN 13</strong></span> ${isbn13}</li>
 					<li class="list-group-item text-center"><span class="pull-left"><strong
 							class=""></strong></span> <a href="/research/?isbn=${isbn}" class="btn btn-success ">Compare Prices</a>
-							&nbsp;<strong class=""> </strong></span> <a href="/allbook?isbn=${isbn}" class="btn btn-success">Find Match</a></li>
+							&nbsp;<strong class=""> </strong></span> <a href="/jsp/result.jsp?isbn=${isbn}" class="btn btn-success">Find Match</a></li>
 				</ul>
 			</div>
 	</div>

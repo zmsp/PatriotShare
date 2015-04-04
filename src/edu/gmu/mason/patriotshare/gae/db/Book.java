@@ -42,6 +42,7 @@ public final class Book {
 	private static final String ISBN_PROPERTY = "isbn";
 	private static final String TITLE_PROPERTY = "title";
 	private static final String PRICE_PROPERTY = "price";
+	private static final String USERID_PROPERTY = "userid";
 
 	/**
 	 * The name of the Book ENTITY KIND used in GAE.
@@ -51,6 +52,8 @@ public final class Book {
 			.compile("\\A[0-9]{10,13}\\Z");
 	private static final Pattern TITLE_PATTERN = Pattern
 			.compile("\\A[ \\w-'',]{3,100}\\Z");
+	private static final Pattern USERID_PATTERN = Pattern
+			.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"); //userid@domain.tld
 
 	//
 	// SECURITY
@@ -108,6 +111,19 @@ public final class Book {
 	public static String getISBN(Entity book) {
 		return (String) book.getProperty(ISBN_PROPERTY);
 	}
+	
+	/**
+	 * Return the UserID associated with this book.
+	 * 
+	 * @param book
+	 *            The GAE Entity storing the book.
+	 * @return the UserID associated with this book as a String.
+	 */
+	public static String getUserID(Entity book) {
+		return (String) book.getProperty(USERID_PROPERTY);
+	}
+	
+	
 
 	/**
 	 * The regular expression pattern for the ISBN of the book.
@@ -160,6 +176,18 @@ public final class Book {
 		Matcher matcher = TITLE_PATTERN.matcher(title);
 		return matcher.find();
 	}
+	
+	/**
+	 * Check if the UserID is correct format (userid@domain.tld)
+	 * 
+	 * @param email
+	 *            The checked string.
+	 * @return true is the title is correct.
+	 */
+	public static boolean checkUserID(String email) {
+		Matcher matcher = USERID_PATTERN.matcher(email);
+		return matcher.find();
+	}
 
 	//
 	// CREATE BOOK
@@ -176,7 +204,7 @@ public final class Book {
 	 *            The title for the book.
 	 * @return the Entity created with this ISBN and title or null if error
 	 */
-	public static Entity createBook(String isbn, String title, Double price) {
+	public static Entity createBook(String isbn, String title, Double price, String userid) {
 		Entity book = null;
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -199,6 +227,7 @@ public final class Book {
 			book.setProperty(ISBN_PROPERTY, isbn);
 			book.setProperty(TITLE_PROPERTY, title);
 			book.setProperty(PRICE_PROPERTY, price);
+			book.setProperty(USERID_PROPERTY, userid);
 			datastore.put(book);
 
 			txn.commit();

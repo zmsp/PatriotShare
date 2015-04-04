@@ -17,20 +17,15 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Start Here <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
+                  <li><a href="/jsp/index.jsp">Find A Book</a></li>
                   <li><a href="/addbook">Sell A Book</a></li>
-                  <li><a href="/allbook">Find A Book</a></li>
-                  <li><a href="/allbook">My Profile</a></li>
-                  <!-- <li class="disabled"><a href='#'>Find A Match</a></li> -->
-                  <!-- <li class="disabled"><a href='#'>My Profile</a></li> -->
-
+                  <li><a href="/allbook">My Books</a></li>
                 </ul>
-              </li>
-            
+              </li> 
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li style="background-color:#CCC66C" active><a href="/jsp/login.jsp">Log In<span class="sr-only">(current)</span></a></li>
-              <li style="background-color:#CCC66C" active><a href="/jsp/signup.jsp">Sign Up<span class="sr-only">(current)</span></a></li>
+              <!-- <li style="background-color:#CCC66C" active><a href="/jsp/login.jsp">Log Out<span class="sr-only">(current)</span></a></li> -->
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
