@@ -25,6 +25,8 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
+import edu.gmu.mason.patriotshare.gae.db.UserProfile;
+
 /**
  * GAE ENTITY UTIL CLASS: "Book" <br>
  * PARENT: NONE <br>
@@ -236,8 +238,7 @@ public final class Book {
 				txn.rollback();
 
 			}
-		}
-
+		}  
 		return book;
 	}
 

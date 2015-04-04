@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import edu.gmu.mason.patriotshare.gae.db.Book;
+import edu.gmu.mason.patriotshare.gae.db.UserProfile;
 
 /**
  * Servlet implementation class AddBook
@@ -37,6 +38,7 @@ public class AddBookServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String isbn = request.getParameter("ISBN");
 		double price = Double.parseDouble(request.getParameter("price"));
+<<<<<<< HEAD
 		String email = request.getParameter("email");
 
 		if (isbn == null || isbn.isEmpty()) {
@@ -53,6 +55,25 @@ public class AddBookServlet extends HttpServlet {
 
 		response.sendRedirect("/jsp/allBook.jsp");
 
+=======
+		
+		 if (isbn==null ||isbn.isEmpty()) {
+			 throw new IOException("Add book error, empty isbn");
+			}
+		 
+		 if (title==null ||title.isEmpty()) {
+			 throw new IOException("Add book error, empty title");
+			}
+		 if (price<=0) {
+			 throw new IOException("Not a valid price");
+			}
+		 
+			 Book.createBook(isbn, title, price);
+			 UserProfile.addtobooklist(isbn, title);
+			 UserProfile.Testbooklist();
+		 response.sendRedirect("/jsp/allBook.jsp");
+		 
+>>>>>>> origin/master
 	}
 
 }
