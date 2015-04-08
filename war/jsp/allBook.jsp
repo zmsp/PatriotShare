@@ -64,7 +64,52 @@
 			</table>
 
 		</div>
+		
+			<h3>My Wish List:</h3>
+			<div>
+			<%
+			
+			DatastoreService datastor = DatastoreServiceFactory
+							.getDatastoreService();
+					Query q = new Query("BookWish");
+					List<Entity> WishBooks = datastor.prepare(q).asList(
+							FetchOptions.Builder.withLimit(100));
 
+					if (WishBooks.isEmpty()) {
+			%>
+			<p>There are no books listed.</p>
+			<%
+				} else {
+			%>
+			
+			<table id="example" class="display">
+				<thead>
+				<tr>
+					<th>Book Title</th>
+					<th>ISBN</th>
+					<!--<th>Asking Price</th>-->
+					<!--<th>Trade</th> -->
+					<!--<th>Get</th>  -->
+				</tr>
+				</thead>
+				<tbody>
+		    <%
+				
+					for (Entity BookWish : Books) {
+									out.print("<tr>");
+									out.print("<td>" + BookWish.getProperty("title") + "</td>");
+									out.print("<td>" + BookWish.getProperty("isbn") + "</td>");
+									//out.print("<td><a href=\"/trade/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
+									//out.print("<td><a href=\"/get/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Get</a></td>");
+									out.print("</tr>");
+
+								}
+							}
+				%>
+				</tbody>
+			</table>
+
+		</div>
 
 	</div>
 	<jsp:include page="/fragments/footer.jsp" />

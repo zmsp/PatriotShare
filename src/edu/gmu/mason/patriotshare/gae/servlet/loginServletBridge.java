@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Cookie;
+import javax.servlet.RequestDispatcher;
+
 
 import org.apache.geronimo.mail.util.Hex;
 
@@ -99,23 +102,24 @@ public class loginServletBridge extends HttpServlet {
 						byte[] thedigest = md.digest(bytesOfMessage);
 						String hash = new String(Hex.encode(thedigest));
 					
-						String retrivedPW = (String) result.get(0).getProperty("password");
+						String retrievedPW = (String) result.get(0).getProperty("password");
 						
-						
-						
-						if (hash.equals(retrivedPW))
+						if (hash.equals(retrievedPW))
 						{
-						
-
-							
 							
 							HttpSession session = request.getSession();
 
-							session.setAttribute("user", user);
-							
+							session.setAttribute("username", user);
 							session.setMaxInactiveInterval(30*60);
 							String encodedURL = response.encodeRedirectURL("/jsp/index.jsp");
-				            response.sendRedirect(encodedURL);
+							response.sendRedirect(encodedURL);
+					        
+					        try {
+				                RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/index.jsp");
+				                rd.forward(request, response);
+				            } catch (Exception e) {
+				                e.printStackTrace();
+				            }
 				            
 				           
 						}else
@@ -131,7 +135,8 @@ public class loginServletBridge extends HttpServlet {
 					response.sendRedirect("/jsp/addBook.jsp");	
 				}
 			} catch (Exception e) {
-				// TODO log the error
+				e.printStackTrace();
+				response.sendRedirect("/jsp/addBook.jsp");	
 			}//end try/catch
 			
 		 

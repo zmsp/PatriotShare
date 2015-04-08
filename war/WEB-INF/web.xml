@@ -29,6 +29,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>addBook</servlet-name>
 		<url-pattern>/addbook</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>addWish</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.AddWishServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addWish</servlet-name>
+		<url-pattern>/addwish</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>addAccount</servlet-name>

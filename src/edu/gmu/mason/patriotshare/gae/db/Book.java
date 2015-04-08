@@ -44,7 +44,6 @@ public final class Book {
 	private static final String ISBN_PROPERTY = "isbn";
 	private static final String TITLE_PROPERTY = "title";
 	private static final String PRICE_PROPERTY = "price";
-	private static final String USERID_PROPERTY = "userid";
 
 	/**
 	 * The name of the Book ENTITY KIND used in GAE.
@@ -121,9 +120,9 @@ public final class Book {
 	 *            The GAE Entity storing the book.
 	 * @return the UserID associated with this book as a String.
 	 */
-	public static String getUserID(Entity book) {
-		return (String) book.getProperty(USERID_PROPERTY);
-	}
+//	public static String getUserID(Entity book) {
+//		return (String) book.getProperty(USERID_PROPERTY);
+//	}
 	
 	
 
@@ -206,7 +205,7 @@ public final class Book {
 	 *            The title for the book.
 	 * @return the Entity created with this ISBN and title or null if error
 	 */
-	public static Entity createBook(String isbn, String title, Double price, String userid) {
+	public static Entity createBook(String isbn, String title, Double price) {
 		Entity book = null;
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -229,7 +228,7 @@ public final class Book {
 			book.setProperty(ISBN_PROPERTY, isbn);
 			book.setProperty(TITLE_PROPERTY, title);
 			book.setProperty(PRICE_PROPERTY, price);
-			book.setProperty(USERID_PROPERTY, userid);
+			//book.setProperty(USERID_PROPERTY, userid);
 			datastore.put(book);
 
 			txn.commit();

@@ -44,6 +44,7 @@ public class UserProfile implements Serializable {
 	private static String[] booktitlelist = new String[20]; //Temporarily static for testing 
 	private static String[] bookisbnlist = new String[20]; //Temporarily static for testing
 	private static boolean [] booklistarraytracker = new boolean [20]; //Temporarily static for testing
+	private static double[] bookpricelist = new double[20];
 	//
 	// SECURITY
 	//
@@ -96,6 +97,20 @@ public class UserProfile implements Serializable {
 
 	
 
+	/**
+	 * The regular expression pattern for the name of the admin profile.
+	 */
+	private static final Pattern NAME_PATTERN = Pattern.compile("\\A[A-Za-z]+([ -][A-Za-z]+){0,10}\\Z");
+	
+	/**
+	 * Check if the name is correct for an admin profile. 
+	 * @param name The checked string. 
+	 * @return true is the name is correct. 
+	 */
+	public static boolean checkName(String name) {
+		Matcher matcher=NAME_PATTERN.matcher(name);
+		return matcher.find();
+	}
 	
 	//
 	// LOGIN ID
@@ -172,11 +187,11 @@ public class UserProfile implements Serializable {
 	 * @param id A {@link String} containing the ID key (a <code>long</code> number)
 	 * @return A GAE {@link Entity} for the AdminProfile or <code>null</code> if none or error.
 	 */
-	public static Entity getAdminProfile(String userProfileId) {
+	public static Entity getAdminProfile(String adminProfileId) {
 		Entity adminProfile = null;
 		try {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			long id = Long.parseLong(userProfileId);
+			long id = Long.parseLong(adminProfileId);
 			Key adminProfileKey = KeyFactory.createKey(ENTITY_KIND, id);
 			adminProfile = datastore.get(adminProfileKey);
 		} catch (Exception e) {
@@ -307,12 +322,13 @@ public class UserProfile implements Serializable {
 		return getAdminProfile(user)!=null;
 	}
 	
-	public static void addtobooklist(String isbn, String title){ //Temporarily static for testing
+	public static void addtobooklist(String isbn, String title, double price){ //Temporarily static for testing
 		for (int i = 0; i < booklistarraytracker.length; i++ ) {
 			if (booklistarraytracker[i] =! true){
 				booklistarraytracker[i] = true;
 				booktitlelist[i] = title;
 				bookisbnlist [i] = isbn;
+				bookpricelist [i] = price;
 				break;
 			}
 		}

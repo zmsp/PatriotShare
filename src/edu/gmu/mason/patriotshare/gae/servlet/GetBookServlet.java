@@ -26,7 +26,7 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import edu.gmu.mason.patriotshare.gae.db.Book;
 
 /**
- * Servlet implementation class AddBook
+ * Servlet implementation class GetBookServlet
  */
 @SuppressWarnings("serial")
 public class GetBookServlet extends HttpServlet {

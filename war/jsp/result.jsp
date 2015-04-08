@@ -5,6 +5,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
+	<%
+	//allow access only if session exists
+	Entity user = null;
+	//String user = null;
+	
+	if( (session.getAttribute("username") == null)) {
+		//response.sendRedirect("login.jsp");
+		
+	} else {
+		user = (Entity) session.getAttribute("username");
+		//String name = (String) user.getProperty("firstName");
+		String sessionID = session.getId();
+				
+	}
+	%>
+
 <!-- Import library and scripts are from this file -->
 <jsp:include page="/fragments/staticFiles.jsp" />
 
@@ -17,10 +33,10 @@
 			<%
 				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 					Query queryBook = new Query("Book");
-					Query queryUser = new Query("User");
+					Query queryUserProfile = new Query("UserProfile");
 					List<Entity> Books = datastore.prepare(queryBook).asList(FetchOptions.Builder.withLimit(100));
-					List<Entity> Users = datastore.prepare(queryUser).asList(FetchOptions.Builder.withLimit(100));
-					if (Books.isEmpty()) {
+					List<Entity> UserProfiles = datastore.prepare(queryUserProfile).asList(FetchOptions.Builder.withLimit(100));
+					if (UserProfiles.isEmpty()) {
 			%>
 			<p>Sorry, currently there are no matches :-(</p>
 			<%
@@ -39,21 +55,41 @@
 				</thead>
 				<tbody>
 				<%
-					for (Entity Book : Books) {
+					
+					String [] names = new String[UserProfiles.size()];
+					Double [] prices = new Double[Books.size()];
+					
+					for (int i=0; i <UserProfiles.size(); i++) {
 						
-						if(request.getParameter("isbn").equals(Book.getProperty("isbn"))) {
+						if (UserProfiles.get(i) != null)
+							names[i] = (String)UserProfiles.get(i).getProperty("loginID");
+								
+					}
+					
+					for (int i=0; i <Books.size(); i++) {
+						if (Books.get(i) != null)
+							prices[i] = (Double)Books.get(i).getProperty("price");
+					}
+				
+				
+					//for (Entity users : UserProfiles) {
+					  for (int i=0; i <UserProfiles.size(); i++) {
+						//if(request.getParameter("isbn").equals(users.getProperty("isbn"))) {
 							
 						
 							out.print("<tr>");
-							out.print("<td>" + Book.getProperty("userid") + "</td>");
+							out.print("<td>" + names[i] + "</td>");
 							out.print("<td> 3.10 </td>");
-							String p = Book.getProperty("price").toString();
-							DecimalFormat df = new DecimalFormat("0.00");
-							out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
-							out.print("<td><a href=\"/tradeConfirmation/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
+							//String p = Book.getProperty("price").toString();
+							//DecimalFormat df = new DecimalFormat("0.00");
+							
+							//if (prices[i] != null)
+							out.print("<td> $" + prices[i].doubleValue() + "</td>");
+							
+							out.print("<td><a href=\"/tradeConfirmation/?isbn=" + "" /*Book.getProperty("isbn")*/ + "\"class=\"btn btn-info\">Trade</a></td>");
 							out.print("<td><a href=\"#" + "\"class=\"btn btn-info\">Buy</a></td>");
 							out.print("</tr>");
-						}	
+						//}	
 					}
 				}
 				%>
