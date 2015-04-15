@@ -15,6 +15,19 @@
 <jsp:include page="/fragments/staticFiles.jsp" />
 </head>
 <body>
+
+	<%
+	//allow access only if session exists
+	Entity user = null;
+	
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("/jsp/login.jsp"); 
+		return; 
+	}else user = (Entity) session.getAttribute("username");
+
+	String sessionID = session.getId();
+
+	%>
 <jsp:include page="/fragments/bodyHeader.jsp" />
 
 <div class="container-fluid"> 
@@ -123,7 +136,7 @@
 		<div class="col-sm-4">
 			<div class="panel panel-success">
 				<div class="panel-heading">
-					<h3 class="panel-title">My Profile</h3>
+					<h3 class="panel-title"><%out.print(user.getProperty("firstName")); %>'s Profile</h3>
 				</div>
 				<img src="/resources/profile.jpg" alt="..."
 					class="img-circle center-block">
@@ -144,7 +157,9 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Last seen</strong></span> Yesterday</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Name</strong></span>John Doe</li>
+							class="">Name</strong></span><%out.print(user.getProperty("firstName") + " " + user.getProperty("lastName")); %></li>
+					<li class="list-group-item text-right"><span class="pull-left"><strong
+							class="">Email</strong></span><%out.print(user.getProperty("loginID")); %></li>
 
 				</ul>
 

@@ -6,7 +6,7 @@
 <body>
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
-		<form action="/addwish" method="post">
+		<form action="/addWish" method="post">
 			<div class="form-group">
 				<label for="bookTitle">Book Title</label> <input required="required" type="text"
 					class="form-control" id="bookTitle" placeholder="Enter book title"
