@@ -106,7 +106,7 @@
 				<tbody>
 		    <%
 				
-					for (Entity BookWish : Books) {
+					for (Entity BookWish : WishBooks) {
 									out.print("<tr>");
 									out.print("<td>" + BookWish.getProperty("title") + "</td>");
 									out.print("<td>" + BookWish.getProperty("isbn") + "</td>");

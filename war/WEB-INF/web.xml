@@ -36,7 +36,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>addWish</servlet-name>
-		<url-pattern>/addwish</url-pattern>
+		<url-pattern>/addWish</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
