@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="javax.json.stream.JsonParser.Event"%>
+<%@page import="edu.gmu.mason.patriotshare.gae.db.BookInfo"%>
+<%@ page import="com.google.appengine.api.datastore.*"%>
+<%@ page import="java.util.List"%>
+<%@ page import="javax.json.*"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@ page import="java.io.InputStream"%>
+<%@ page import="edu.gmu.mason.patriotshare.gae.db.BookPrices"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- Import library and scripts are from this file -->
 <jsp:include page="/fragments/staticFiles.jsp" />
+	<%
+	//allow access only if session exists
+	Entity user = null;
+	
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("/jsp/login.jsp"); 
+		return; 
+	}else user = (Entity) session.getAttribute("username");
+
+	String sessionID = session.getId();
+
+	%>
 <body>
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">

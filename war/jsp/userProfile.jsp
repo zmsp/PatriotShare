@@ -15,6 +15,19 @@
 <jsp:include page="/fragments/staticFiles.jsp" />
 </head>
 <body>
+
+	<%
+	//allow access only if session exists
+	Entity user = null;
+	
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("/jsp/login.jsp"); 
+		return; 
+	}else user = (Entity) session.getAttribute("username");
+
+	String sessionID = session.getId();
+
+	%>
 <jsp:include page="/fragments/bodyHeader.jsp" />
 
 <div class="container-fluid"> 
@@ -144,7 +157,7 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Last seen</strong></span> Yesterday</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Name</strong></span>John Doe</li>
+							class="">Name</strong></span><% out.print(user.getProperty("firstName") + " " + user.getProperty("lastName")); %></li>
 
 				</ul>
 
