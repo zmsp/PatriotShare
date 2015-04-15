@@ -7,7 +7,18 @@
 
 <!-- Import library and scripts are from this file -->
 <jsp:include page="/fragments/staticFiles.jsp" />
+	<%
+	//allow access only if session exists
+	Entity user = null;
+	
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("/jsp/login.jsp"); 
+		return; 
+	}else user = (Entity) session.getAttribute("username");
 
+	String sessionID = session.getId();
+
+	%>
 <body>
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">

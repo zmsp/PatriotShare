@@ -8,14 +8,13 @@
 	<%
 	//allow access only if session exists
 	Entity user = null;
-	//String user = null;
+	
 	
 	if( (session.getAttribute("username") == null)) {
-		//response.sendRedirect("login.jsp");
+		response.sendRedirect("/jsp/login.jsp");
 		
 	} else {
 		user = (Entity) session.getAttribute("username");
-		//String name = (String) user.getProperty("firstName");
 		String sessionID = session.getId();
 				
 	}

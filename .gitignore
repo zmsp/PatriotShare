@@ -32,3 +32,4 @@ war/WEB-INF/appengine-generated/datastore-indexes-auto.xml
 *.properties
 war/WEB-INF/appengine-generated/local_db.bin
 war/WEB-INF/appengine-generated/datastore-indexes-auto.xml
+*.xml
