@@ -1,3 +1,7 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@ page import="com.google.appengine.api.datastore.*"%>
+<%@ page import="java.util.List"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
