@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -44,6 +45,7 @@ public final class Book {
 	private static final String ISBN_PROPERTY = "isbn";
 	private static final String TITLE_PROPERTY = "title";
 	private static final String PRICE_PROPERTY = "price";
+	private static final String EMAIL_PROPERTY = "email";
 
 	/**
 	 * The name of the Book ENTITY KIND used in GAE.
@@ -205,7 +207,7 @@ public final class Book {
 	 *            The title for the book.
 	 * @return the Entity created with this ISBN and title or null if error
 	 */
-	public static Entity createBook(String isbn, String title, Double price) {
+	public static Entity createBook(String isbn, String title, Double price, String email) {
 		Entity book = null;
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -218,16 +220,17 @@ public final class Book {
 			}*/
 			
 
-			book = getBookWithISBN(isbn);
+			/*book = getBookWithISBN(isbn);
 			if (book != null) {
 				return null;
 
-			}
+			}*/
 
 			book = new Entity(ENTITY_KIND);
 			book.setProperty(ISBN_PROPERTY, isbn);
 			book.setProperty(TITLE_PROPERTY, title);
 			book.setProperty(PRICE_PROPERTY, price);
+			book.setProperty(EMAIL_PROPERTY, email);
 			//book.setProperty(USERID_PROPERTY, userid);
 			datastore.put(book);
 
@@ -316,6 +319,10 @@ public final class Book {
 		}
 		return book;
 	}
+	
+
+	
+	
 
 	//
 	// DELETE BOOK
@@ -365,5 +372,17 @@ public final class Book {
 				FetchOptions.Builder.withLimit(limit));
 		return result;
 	}
+
+	public static Entity getBookWithKey(String stringToKey) throws EntityNotFoundException {
+		DatastoreService datastore = DatastoreServiceFactory
+				.getDatastoreService();
+		Key bookKey = KeyFactory.stringToKey(stringToKey);
+		
+		return datastore.get(bookKey);
+	}
+
+
+	
+
 
 }

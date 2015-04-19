@@ -34,12 +34,20 @@ public class ResearchBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String isbn = request.getParameter("isbn"); 
-		Entity e= Book.getBookWithISBN(isbn);
-		request.setAttribute("price",e.getProperty("price").toString());
-		request.setAttribute("isbn", e.getProperty("isbn").toString());
-		request.getRequestDispatcher("/jsp/research.jsp").forward(request, response); 
-		//response.sendRedirect("/jsp/allBook.jsp");
+		String keyStr = request.getParameter("key"); 
+		Entity e=null;
+		try {
+			e = Book.getBookWithKey(keyStr);
+			request.setAttribute("error","none");
+			request.setAttribute("price",e.getProperty("price").toString());
+			request.setAttribute("isbn", e.getProperty("isbn").toString());
+			request.getRequestDispatcher("/jsp/trade.jsp").forward(request, response); 
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			request.setAttribute("error","No Book found with such isbn in ISBNDB.com");
+			request.getRequestDispatcher("/jsp/error.jsp").forward(request, response); 
+		}
 	}
 
 	/**

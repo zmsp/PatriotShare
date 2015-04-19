@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -34,11 +35,21 @@ public class TradeBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String isbn = request.getParameter("isbn"); 
-		Entity e= Book.getBookWithISBN(isbn);
-		request.setAttribute("price",e.getProperty("price").toString());
-		request.setAttribute("isbn", e.getProperty("isbn").toString());
-		request.getRequestDispatcher("/jsp/trade.jsp").forward(request, response); 
+		String keyStr = request.getParameter("key"); 
+		Entity e=null;
+		try {
+			e = Book.getBookWithKey(keyStr);
+			request.setAttribute("error","none");
+			request.setAttribute("price",e.getProperty("price").toString());
+			request.setAttribute("isbn", e.getProperty("isbn").toString());
+			request.getRequestDispatcher("/jsp/trade.jsp").forward(request, response); 
+			
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			 e1.printStackTrace();
+			request.setAttribute("error","No Book found with such name in ISBNDB");
+			request.getRequestDispatcher("/jsp/error.jsp").forward(request, response); 
+		}
 		//response.sendRedirect("/jsp/allBook.jsp");
 	}
 

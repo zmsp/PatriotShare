@@ -12,7 +12,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>PatriotShare</servlet-name>
 		<url-pattern>/patriotshare</url-pattern>
 	</servlet-mapping>
-    <servlet>
+	<servlet>
 		<servlet-name>getBookInfo</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.getBookInfo</servlet-class>
 	</servlet>
@@ -29,7 +29,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>addBook</servlet-name>
 		<url-pattern>/addbook</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>addWish</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.AddWishServlet</servlet-class>
@@ -65,10 +65,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>trade</servlet-name>
 		<url-pattern>/trade/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>tradeConfirmation</servlet-name>
-		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.tradeConfirmationServlet</servlet-class>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.TradeConfirmationServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>tradeConfirmation</servlet-name>
@@ -104,6 +104,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>orderReview</servlet-name>
+		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.OrderReviewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>orderReview</servlet-name>
+		<url-pattern>/orderReview/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>research</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.ResearchBookServlet</servlet-class>
 	</servlet>
@@ -111,7 +119,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>research</servlet-name>
 		<url-pattern>/research/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>edu.gmu.mason.patriotshare.gae.servlet.LogOutServlet</servlet-class>
@@ -120,8 +128,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>logout</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
-
-
+	
 	<welcome-file-list>
 		<welcome-file>jsp/index.jsp</welcome-file>
 	</welcome-file-list>

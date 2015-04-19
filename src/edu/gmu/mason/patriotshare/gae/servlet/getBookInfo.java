@@ -93,9 +93,9 @@ public class getBookInfo extends HttpServlet {
 	    
 	    }
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			
-			throw new IOException(e1.toString());
+			 e1.printStackTrace();
+			request.setAttribute("error","Book information isn't present on Google Books. Try buying instead");
+			request.getRequestDispatcher("/jsp/error.jsp").forward(request, response); 
 		}
 		request.getRequestDispatcher("/jsp/bookInfo.jsp").forward(request, response); 
 	}

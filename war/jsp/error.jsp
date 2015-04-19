@@ -11,13 +11,19 @@
 	<div class="container">
 		
 			<div class='row text-center bg-danger'>
-				<img src="/resources/error.png" alt="Error banner" class="img-rounded">
-				<h4>You got error because:</h4>
-				<h5">
-					<%=exception.getMessage()%>
+				<h4>We have an error. We are working hard to fix the problem. Please contact us for help at patriotshare@gmail.com</h4>
+				<h5>
+				<%
+				if ((request.getAttribute("error")).equals("none")){
+					
+					out.print ("no error");
+				}
+				%>
+					Cause of error: ${error}
 				</h5>
 				
 				
+					<%=exception.getMessage()%>
 
 
 			</div>

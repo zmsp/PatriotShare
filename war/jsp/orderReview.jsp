@@ -37,8 +37,7 @@
 					<h3 class="panel-title">Book Information</h3>
 				</div>
 				<div class="bookInfo">
-					<img src="${thumbnail}" alt="..."
-						class="img-thumbnail center-block">
+				
 					<div class="caption-full">
 						<h4 class="pull-right">
 							Asking Price:
@@ -48,32 +47,20 @@
 						<h4>
 							<a href="${url}">${title}</a>
 						</h4>
-						<p>${description}</p>
+						<p>Click on the book name to get more information about this book</p>
 					</div>
-					NOTE: Books meta data are from google books API. Contact seller to
-					make sure.
+					
 
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Authors</strong></span> ${authors}</li>
+							class="">Title</strong></span> ${title}</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">publisher</strong></span> ${publisher}</li>
+							class="">Price</strong></span> ${price}</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">publishedDate</strong></span> ${publishedDate}</li>
+							class="">ISBN</strong></span> ${isbn}</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">ISBN 10</strong></span> ${isbn10}</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">ISBN 13</strong></span> ${isbn13}</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Page Count</strong></span> ${pageCount}</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Language</strong></span> ${language}</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">How much will you save?</strong></span> <a
-						href="/research/?key=${key}" class="btn btn-primary ">Research</a></li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Buy this book?</strong></span> <a href="/orderReview/?key=${key}"
+							class="">Confirm buying this book for <fmt:formatNumber type="currency" value="${price}" />?</strong></span> <a href="/tradeConfirmation/?key=${key}"
 						class="btn btn-success">Buy</a></li>
 
 
@@ -106,7 +93,7 @@
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Last seen</strong></span> Yesterday</li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Name</strong></span>John Doe</li>
+							class="">Name</strong></span>${name}</li>
 
 				</ul>
 

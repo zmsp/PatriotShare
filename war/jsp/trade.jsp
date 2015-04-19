@@ -27,54 +27,57 @@
 
 
 		<%
-		InputStream is = null; 
-		JsonArray results = null; 
-		try
-		{
-			URL url = new URL("http://isbndb.com/api/v2/json/0ee0g43m/prices/" + request.getAttribute("isbn"));
-			URLConnection urlConn = url.openConnection(); 
-			urlConn.setConnectTimeout(30000); 
-			urlConn.setReadTimeout(30000); 
-			is = urlConn.getInputStream(); 
-			JsonReader rdr = Json.createReader(is); 
-			JsonObject obj = rdr.readObject(); 
-			results = obj.getJsonArray("data"); 		
-		}catch(SocketTimeoutException e)
-		{
-			e.printStackTrace(); 
+		if ((request.getAttribute("error")).equals("none")){
 			
-		}finally
-		{
-			is.close(); 	
-		}
-					
-		
-		ArrayList<BookPrices> books = new ArrayList<BookPrices>(); 
-		
-		// adds all the values returned from the url to an ArrayList
-		for(JsonObject result : results.getValuesAs(JsonObject.class))
-		{
-			BookPrices temp = new BookPrices(result.getString("store_id"), Double.parseDouble(result.getString("price"))); 
-			books.add(temp); 
-		}
-		
-		//Sorts the list by descending order
-		for(int i = 1; i < books.size(); i++)
-		{
-			int k = i; 
-			
-			while(k > 0 && books.get(k).getPrice() > books.get(k-1).getPrice() )
+			InputStream is = null; 
+			JsonArray results = null; 
+			try
 			{
-				BookPrices temp = books.get(k); 
-				books.set(k, books.get(k-1)); 
-				books.set(k-1, temp); 
-				k--; 
+				URL url = new URL("http://isbndb.com/api/v2/json/0ee0g43m/prices/" + request.getAttribute("isbn"));
+				URLConnection urlConn = url.openConnection(); 
+				urlConn.setConnectTimeout(30000); 
+				urlConn.setReadTimeout(30000); 
+				is = urlConn.getInputStream(); 
+				JsonReader rdr = Json.createReader(is); 
+				JsonObject obj = rdr.readObject(); 
+				results = obj.getJsonArray("data"); 		
+			}catch(SocketTimeoutException e)
+			{
+				e.printStackTrace(); 
+				
+			}finally
+			{
+				is.close(); 	
 			}
-		}
-	
-	%>
-	<div class="row">
+						
+			
+			ArrayList<BookPrices> books = new ArrayList<BookPrices>(); 
+			
+			// adds all the values returned from the url to an ArrayList
+			for(JsonObject result : results.getValuesAs(JsonObject.class))
+			{
+				BookPrices temp = new BookPrices(result.getString("store_id"), Double.parseDouble(result.getString("price"))); 
+				books.add(temp); 
+			}
+			
+			//Sorts the list by descending order
+			for(int i = 1; i < books.size(); i++)
+			{
+				int k = i; 
+				
+				while(k > 0 && books.get(k).getPrice() > books.get(k-1).getPrice() )
+				{
+					BookPrices temp = books.get(k); 
+					books.set(k, books.get(k-1)); 
+					books.set(k-1, temp); 
+					k--; 
+				}
+			}
+			
+			%>
+			<div class="row">
 		<h2>Trade one of your books for theirs. It's as simple as that.</h2> 
+		
 	</div>
 	
 	<div class=" row col-sm-12 well">
@@ -101,6 +104,19 @@
 			</p>
 		</div>
 	</div>
+			
+			
+			<% 
+			
+		}else {
+			out.print("Error Loading book price from book from isbndb");
+			
+		}
+			
+		
+	
+	%>
+	
 
 	
 	

@@ -38,7 +38,8 @@ public class AddBookServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String isbn = request.getParameter("ISBN");
 		double price = Double.parseDouble(request.getParameter("price"));
-		//String email = request.getParameter("email");
+		String email = request.getParameter("email");
+
 
 		if (isbn == null || isbn.isEmpty()) {
 			throw new IOException("Add book error, empty isbn");
@@ -50,22 +51,9 @@ public class AddBookServlet extends HttpServlet {
 		if (price <= 0) {
 			throw new IOException("Not a valid price");
 		}
-		//Book.createBook(isbn, title, price);
-		//response.sendRedirect("/jsp/allBook.jsp");
-
 		
-		if (isbn == null || isbn.isEmpty()) {
-			throw new IOException("Add book error, empty isbn");
-		}
 
-		if (title == null || title.isEmpty()) {
-			throw new IOException("Add book error, empty title");
-		}
-		if (price <= 0) {
-			throw new IOException("Not a valid price");
-		}
-
-		Book.createBook(isbn, title, price);
+		Book.createBook(isbn, title, price, email);
 		UserProfile.addtobooklist(isbn, title, price);
 		UserProfile.Testbooklist();
 		response.sendRedirect("/jsp/allBook.jsp");

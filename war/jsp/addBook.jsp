@@ -50,7 +50,7 @@
 			</div>
 			
 			<div>
-			 <input type="hidden" name="email" value="john88@gmail.com"> 
+			 <input type="hidden" name="email" value= "<%  out.print(user.getProperty("loginID")); %>"> 
 			</div>
 
 			<button type="submit" class="btn btn-primary">
