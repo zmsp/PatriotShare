@@ -1,12 +1,23 @@
 <%@page import="javax.json.stream.JsonParser.Event"%>
 <%@page import="edu.gmu.mason.patriotshare.gae.db.BookInfo"%>
-<%@ page import="com.google.appengine.api.datastore.*"%>
+<%@ page import= "com.google.appengine.api.datastore.DatastoreService" %>
+<%@ page import= "com.google.appengine.api.datastore.DatastoreServiceFactory"%>
+<%@ page import= "com.google.appengine.api.datastore.Entity" %>
+<%@ page import= "com.google.appengine.api.datastore.FetchOptions"%>
+<%@ page import= "com.google.appengine.api.datastore.Key"%>
+<%@ page import= "com.google.appengine.api.datastore.KeyFactory"%>
+<%@ page import= "com.google.appengine.api.datastore.Query"%>
+<%@ page import= "com.google.appengine.api.datastore.Transaction"%>
+<%@ page import= "com.google.appengine.api.datastore.Query.Filter"%>
+<%@ page import= "com.google.appengine.api.datastore.Query.FilterOperator"%>
+<%@ page import= "com.google.appengine.api.datastore.Query.FilterPredicate"%>
 <%@ page import="java.util.List"%>
 <%@ page import="javax.json.*"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page import="java.io.InputStream"%>
 <%@ page import="edu.gmu.mason.patriotshare.gae.db.BookPrices"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,16 +45,34 @@
 <div class="col-sm-8">
 		<div class="row">
 		<h2>Matched Books</h2>
-			<%
-				DatastoreService datastore = DatastoreServiceFactory
-							.getDatastoreService();
-					Query query = new Query("Book");
-					List<Entity> Books = datastore.prepare(query).asList(
-							FetchOptions.Builder.withLimit(100));
+			<% 
+			DatastoreService datastore = null; 
+			Query query = null;
+			List<Entity> matched = null;
+			String myEmail = (String)user.getProperty("loginID");
+			try
+			{
+				//creates datastore
+				 datastore = DatastoreServiceFactory.getDatastoreService();
+				//The "username" is the column we are searching and filtering our results on
+				
+				Filter matchedBooks = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
+			
+				//"User" is the entity to search
+				query = new Query("BookWish");
 
-					if (Books.isEmpty()) {
+				//Links the entity to the search filter
+				query.setFilter(matchedBooks);
+			
+				//Creates the list that has the search results based on the filter applied
+				//The limit should not have to be increased since we are expecting either 1 or 0 results
+				matched = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(100));
+			}catch(NullPointerException e){
+				e.printStackTrace();
+			}
+					if (matched.isEmpty()) {
 			%>
-			<p>There are no books listed.</p>
+					<p>There are no matches found.</p>
 			<%
 				} else {
 			%>
@@ -69,7 +98,7 @@
 				<tbody>
 				<%
 				
-					for (Entity Book : Books) {
+					for (Entity Book : matched) {
 									out.print("<tr>");
 									String s= Book.getProperty("price").toString();
 							
@@ -91,11 +120,18 @@
 				<div class="row">
 		<h2>Books I own</h2>
 			<%
-					Query myQuery = new Query("Book");
-					List<Entity> myBook = datastore.prepare(myQuery).asList(
-							FetchOptions.Builder.withLimit(100));
+				Filter userBooks = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
+			
+				//"User" is the entity to search
+				Query mybookquery = new Query("Book");
 
-					if (myBook.isEmpty()) {
+				//Links the entity to the search filter
+				mybookquery.setFilter(userBooks);
+		
+				//Creates the list that has the search results based on the filter applied
+				//The limit should not have to be increased since we are expecting either 1 or 0 results
+				List<Entity> myBook = datastore.prepare(mybookquery).asList(FetchOptions.Builder.withLimit(100));
+				if(myBook.isEmpty()){
 			%>
 			<p>There are no books listed.</p>
 			<%
@@ -122,6 +158,7 @@
 									out.print("<td>" + Book.getProperty("isbn") + "</td>");
 									DecimalFormat df = new DecimalFormat("0.00");
 									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
+									out.print("<td>" + Book.getProperty("email") + "</td>");
 									out.print("</tr>");
 
 								}
