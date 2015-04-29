@@ -97,7 +97,6 @@
 									out.print("<td>" + Book.getProperty("isbn") + "</td>");
 									DecimalFormat df = new DecimalFormat("0.00");
 									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
-									out.print("<td>" + Book.getProperty("email") + "</td>");
 									out.print("<td><a href=\"/profile/?isbn=" + Book.getProperty("isbn") + "&email=" + Book.getProperty("email") + "\"class=\"btn btn-info\">Remove</a></td>");
 									out.print("</tr>");
 
@@ -137,6 +136,11 @@
 							class="">Name</strong></span><%out.print(user.getProperty("firstName") + " " + user.getProperty("lastName")); %></li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Email</strong></span><%out.print(user.getProperty("loginID")); %></li>
+					<li class="list-group-item text-right"><span class="pull-left"><strong
+							class=""><a class="btn btn-primary" href="/jsp/addBook.jsp" role="button">Add Book</a></li>
+					<li class="list-group-item text-right"><span class="pull-left"><strong
+							class=""><a class="btn btn-primary" href="/jsp/allBook.jsp" role="button">View All Books</a></li>		
+							
 
 				</ul>
 
