@@ -193,7 +193,7 @@ public final class BookWish {
 	}
 
 
-	public static void createBookWish(String isbn, String title) {
+	public static void createBookWish(String email, String isbn, String title) {
 		Entity book = null;
 		DatastoreService datastore = DatastoreServiceFactory
 				.getDatastoreService();
@@ -212,9 +212,9 @@ public final class BookWish {
 			}
 
 			book = new Entity(ENTITY_KIND);
+			book.setProperty("email", email);
 			book.setProperty(ISBN_PROPERTY, isbn);
 			book.setProperty(TITLE_PROPERTY, title);
-			//book.setProperty(USERID_PROPERTY, userid);
 			datastore.put(book);
 
 			txn.commit();

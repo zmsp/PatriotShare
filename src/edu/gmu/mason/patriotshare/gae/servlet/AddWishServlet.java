@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import edu.gmu.mason.patriotshare.gae.db.BookWish;
 //import edu.gmu.mason.patriotshare.gae.db.UserProfile;
 
+
 @SuppressWarnings("serial")
 public class AddWishServlet extends HttpServlet {
 
@@ -27,7 +28,7 @@ public class AddWishServlet extends HttpServlet {
 				HttpServletResponse response) throws ServletException, IOException {
 			String title = request.getParameter("title");
 			String isbn = request.getParameter("ISBN");
-			//String email = request.getParameter("email");
+			String email = request.getParameter("email");
 
 			if (isbn == null || isbn.isEmpty()) {
 				throw new IOException("Add book error, empty isbn");
@@ -48,10 +49,11 @@ public class AddWishServlet extends HttpServlet {
 				throw new IOException("Add book error, empty title");
 			}
 
-			BookWish.createBookWish(isbn, title);
+			BookWish.createBookWish(email, isbn, title);
+
 			//UserProfile.addtobooklist(isbn, title);
 			//UserProfile.Testbooklist();
-			response.sendRedirect("/jsp/allBook.jsp");
+			response.sendRedirect("/jsp/userProfile.jsp");
 			 
 		}
 

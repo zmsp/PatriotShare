@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ page import="com.google.appengine.api.datastore.*"%>
+
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- Import library and scripts are from this file -->
 <jsp:include page="/fragments/staticFiles.jsp" />
+<%
+	//allow access only if session exists
+	Entity user = null;
+	
+	if(session.getAttribute("username") == null){
+		response.sendRedirect("/jsp/login.jsp"); 
+		return; 
+	}else user = (Entity) session.getAttribute("username");
+
+	String sessionID = session.getId();
+
+	%>
 <body>
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 	<div class="container">
@@ -20,7 +36,7 @@
 			</div>
 			
 			<div>
-				<input type="hidden" name="email" value="john88@gmail.com"> 
+				<input type="hidden" name="email" value= "<%  out.print(user.getProperty("loginID")); %>"> 
 			</div>
 
 			<button type="submit" class="btn btn-primary">

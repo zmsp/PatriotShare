@@ -66,8 +66,9 @@
             <!--<li class="dropdown"> -->
                 <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Start Here <span class="caret"></span></a>-->
                 <!-- <ul class="dropdown-menu" role="menu"> -->
-                  <li style="font-size: 8pt"><a href="/addbook">Sell A Book</a></li>
-                  <li style="font-size: 8pt"><a href="/allbook">Buy A Book</a></li>
+                  <li style="font-size: 12pt"><a href="/addbook">Sell A Book</a></li>
+                  <li style="font-size: 12pt"><a href="/allbook">Buy A Book</a></li>
+                  <li style="font-size: 12pt"><a href="/addWish">Wish List</a></li>
                   <!-- <li class="disabled"><a href='#'>Find A Match</a></li> -->
                   <!-- <li class="disabled"><a href='#'>My Profile</a></li> -->
 
@@ -77,8 +78,8 @@
               
             </ul>
             <ul class="nav navbar-nav navbar-right">
-               <li style="font-size: 8pt"><a href="/jsp/userProfile.jsp"><i class='glyphicon glyphicon-user'></i><%out.print(user.getProperty("firstName") + " " + user.getProperty("lastName"));%></a></li>
-              <li style="background-color:#CCC66C; font-size:8pt" active><a href="<%=request.getContextPath()%>/logout">Log out<span class="sr-only">(current)</span></a></li>
+               <li style="font-size: 12pt"><a href="/jsp/userProfile.jsp"><i class='glyphicon glyphicon-user'></i><%out.print(user.getProperty("firstName") + " " + user.getProperty("lastName"));%></a></li>
+              <li style="background-color:#CCC66C; font-size:12pt" active><a href="<%=request.getContextPath()%>/logout">Log out<span class="sr-only">(current)</span></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->

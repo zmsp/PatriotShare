@@ -21,7 +21,7 @@
 			
 			<div class="alert alert-warning" role="alert">
 			
-			Sometimes Email go to junk folder. Contact seller personally with the information we sent you.  
+			Sometimes Email go to junk folder. To prevent this add ait390s1501MdZobair@gmail.com to safe list. Contact seller personally with the information we sent you.  
 			</div>
 				
 			<a class="btn btn-primary" href="/jsp/index.jsp" role="button">Back To Home</a>
