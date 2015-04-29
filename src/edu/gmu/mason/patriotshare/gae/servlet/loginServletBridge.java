@@ -124,7 +124,9 @@ public class loginServletBridge extends HttpServlet {
 				           
 						}else
 						{
-							response.sendRedirect("/jsp/allBook.jsp");
+							String message = "Incorrect Password, please try again";
+							request.setAttribute("message", message);
+							request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 						}
 						 
 					}//end for
@@ -132,11 +134,13 @@ public class loginServletBridge extends HttpServlet {
 				
 				else {
 					
-					response.sendRedirect("/jsp/addBook.jsp");	
+					String message = "User not found";
+					request.setAttribute("umessage", message);
+					request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				response.sendRedirect("/jsp/addBook.jsp");	
+				response.sendRedirect("/jsp/login.jsp");	
 			}//end try/catch
 			
 		 

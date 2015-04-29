@@ -18,12 +18,18 @@
 				<label for="username">Username:</label> <input type="text"
 					class="form-control" id="username" placeholder="jone doe"
 					name="username">
+					<%if(request.getAttribute("umessage") != null){%>
+					<p><span style="color: red"> ${umessage}</span></p>
+					<%} %>
 			</div>
 
 			<div class="form-group">
 				<label for="password">Password:</label> <input name="password"
 					type="password" class="form-control" id="password"
 					placeholder="******">
+					<%if(request.getAttribute("message") != null){%>
+					<p><span style="color: red"> ${message}</span></p>
+					<%} %>
 			</div>
 
 			<button type="submit" class="btn btn-success">
