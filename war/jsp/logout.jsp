@@ -8,7 +8,7 @@
 
 	<div class='row'>
 			<div class='col-sm-12 well'>
-			<h2> You have successfully logged out.</h2>
+			<h3> You have successfully logged out.</h3>
 			</div>
 	</div>	
 	

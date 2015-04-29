@@ -111,11 +111,11 @@ public class loginServletBridge extends HttpServlet {
 
 							session.setAttribute("username", user);
 							session.setMaxInactiveInterval(30*60);
-							String encodedURL = response.encodeRedirectURL("/jsp/index.jsp");
+							String encodedURL = response.encodeRedirectURL("/jsp/userProfile.jsp");
 							response.sendRedirect(encodedURL);
 					        
 					        try {
-				                RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/index.jsp");
+				                RequestDispatcher rd = getServletContext().getRequestDispatcher("/jsp/userProfile.jsp");
 				                rd.forward(request, response);
 				            } catch (Exception e) {
 				                e.printStackTrace();
