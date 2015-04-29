@@ -56,7 +56,7 @@ public class AddBookServlet extends HttpServlet {
 		Book.createBook(isbn, title, price, email);
 		UserProfile.addtobooklist(isbn, title, price);
 		UserProfile.Testbooklist();
-		response.sendRedirect("/jsp/allBook.jsp");
+		response.sendRedirect("/jsp/userProfile.jsp");
 		 
 	}
 

@@ -43,8 +43,7 @@
 
 <div class="container-fluid"> 
 <div class="col-sm-8">
-		<div class="row">
-		<h2>Matched Books</h2>
+
 			<% 
 			DatastoreService datastore = null; 
 			Query query = null;
@@ -84,6 +83,7 @@
 					<th>Book Title</th>
 					<th>ISBN</th>
 					<th>Asking Price</th>
+					<th></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -109,7 +109,7 @@
 		</div>
 </div>
 
-		<div class="col-sm-4">
+		<div class="col-xs-4">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title"><%out.print(user.getProperty("firstName")); %>'s Profile</h3>
@@ -136,11 +136,6 @@
 							class="">Name</strong></span><%out.print(user.getProperty("firstName") + " " + user.getProperty("lastName")); %></li>
 					<li class="list-group-item text-right"><span class="pull-left"><strong
 							class="">Email</strong></span><%out.print(user.getProperty("loginID")); %></li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class=""><a class="btn btn-primary" href="/jsp/addBook.jsp" role="button">Add Book</a></li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class=""><a class="btn btn-primary" href="/jsp/allBook.jsp" role="button">View All Books</a></li>		
-							
 
 				</ul>
 
