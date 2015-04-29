@@ -50,74 +50,13 @@
 			Query query = null;
 			List<Entity> matched = null;
 			String myEmail = (String)user.getProperty("loginID");
-			try
-			{
-				//creates datastore
-				 datastore = DatastoreServiceFactory.getDatastoreService();
-				//The "username" is the column we are searching and filtering our results on
-				
-				Filter matchedBooks = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
-			
-				//"User" is the entity to search
-				query = new Query("BookWish");
-
-				//Links the entity to the search filter
-				query.setFilter(matchedBooks);
-			
-				//Creates the list that has the search results based on the filter applied
-				//The limit should not have to be increased since we are expecting either 1 or 0 results
-				matched = datastore.prepare(query).asList(FetchOptions.Builder.withLimit(100));
-			}catch(NullPointerException e){
-				e.printStackTrace();
-			}
-					if (matched.isEmpty()) {
-			%>
-					<p>There are no matches found.</p>
-			<%
-				} else {
-			%>
-
-
-
-
-
-
-
-
 		
-			<table id="example" class="display">
-				<thead>
-				<tr>
-					<th>Book Title</th>
-					<th>ISBN</th>
-					<th>Asking Price</th>
-					<th>Trade</th>
-					<th>Get</th>
-				</tr>
-				</thead>
-				<tbody>
-				<%
+			 datastore = DatastoreServiceFactory.getDatastoreService();
+			 %>
+			
 				
-					for (Entity Book : matched) {
-									out.print("<tr>");
-									String s= Book.getProperty("price").toString();
-							
-									out.print("<td>" + Book.getProperty("title") + "</td>");
-									out.print("<td>" + Book.getProperty("isbn") + "</td>");
-									DecimalFormat df = new DecimalFormat("0.00");
-									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
-									out.print("<td><a href=\"/trade/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Trade</a></td>");
-									out.print("<td><a href=\"/get/?isbn=" + Book.getProperty("isbn") + "\"class=\"btn btn-info\">Get</a></td>");
-									out.print("</tr>");
-
-								}
-							}
-				%>
-				</tbody>
-			</table>
-
-		</div>
-				<div class="row">
+		
+		<div class="row">
 		<h2>Books I own</h2>
 			<%
 				Filter userBooks = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
@@ -159,6 +98,7 @@
 									DecimalFormat df = new DecimalFormat("0.00");
 									out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
 									out.print("<td>" + Book.getProperty("email") + "</td>");
+									out.print("<td><a href=\"/profile/?isbn=" + Book.getProperty("isbn") + "&email=" + Book.getProperty("email") + "\"class=\"btn btn-info\">Remove</a></td>");
 									out.print("</tr>");
 
 								}
