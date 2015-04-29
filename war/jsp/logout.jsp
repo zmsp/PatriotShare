@@ -1,5 +1,5 @@
 <html>
-<% response.setHeader("Refresh", "5; /jsp/login.jsp"); %>
+<% response.setHeader("Refresh", "1; /jsp/login.jsp"); %>
 <jsp:include page="/fragments/staticFiles.jsp" />
 
 <body>
