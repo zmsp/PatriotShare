@@ -1,5 +1,15 @@
 <%@page import="java.text.DecimalFormat"%>
-<%@ page import="com.google.appengine.api.datastore.*"%>
+<%@ page import= "com.google.appengine.api.datastore.DatastoreService" %>
+<%@ page import= "com.google.appengine.api.datastore.DatastoreServiceFactory"%>
+<%@ page import= "com.google.appengine.api.datastore.Entity" %>
+<%@ page import= "com.google.appengine.api.datastore.FetchOptions"%>
+<%@ page import= "com.google.appengine.api.datastore.Key"%>
+<%@ page import= "com.google.appengine.api.datastore.KeyFactory"%>
+<%@ page import= "com.google.appengine.api.datastore.Query"%>
+<%@ page import= "com.google.appengine.api.datastore.Transaction"%>
+<%@ page import= "com.google.appengine.api.datastore.Query.Filter"%>
+<%@ page import= "com.google.appengine.api.datastore.Query.FilterOperator"%>
+<%@ page import= "com.google.appengine.api.datastore.Query.FilterPredicate"%>
 <%@ page import="java.util.List"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -29,7 +39,10 @@
 			<%
 				DatastoreService datastore = DatastoreServiceFactory
 								.getDatastoreService();
+						String userID = (String)user.getProperty("loginID"); 
+						Filter removeMyself = new FilterPredicate("email", FilterOperator.NOT_EQUAL, userID); 
 						Query query = new Query("Book");
+						query.setFilter(removeMyself); 
 						List<Entity> Books = datastore.prepare(query).asList(
 								FetchOptions.Builder.withLimit(100));
 
@@ -48,6 +61,7 @@
 						<th>Book Title</th>
 						<th>ISBN</th>
 						<th>Asking Price</th>
+						<th>Owner</th>
 						<th>Buy</th>
 						<th>Info</th>
 					</tr>
@@ -62,6 +76,7 @@
 												out.print("<td>" + Book.getProperty("isbn") + "</td>");
 												DecimalFormat df = new DecimalFormat("0.00");
 												out.print("<td> $" + df.format(Book.getProperty("price")) + "</td>");
+												out.print("<td>" + Book.getProperty("email") + "</td>");
 												out.print("<td><a href=\"/orderReview/?key=" + KeyFactory.keyToString(Book.getKey()) + "\"class=\"btn btn-success\">Buy</a></td>");
 												out.print("<td><a href=\"/get/?key=" + KeyFactory.keyToString(Book.getKey()) + "\"class=\"btn btn-info\">Book Info</a></td>");
 												out.print("</tr>");
