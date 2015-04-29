@@ -61,7 +61,7 @@
 							<td> &nbsp; </td>
 						</tr>
 						<tr>
-							<td>&nbsp;</td><td><a class="btn btn-primary" href="/jsp/allBook.jsp" role="button">My Books</a>
+							<td>&nbsp;</td><td><a class="btn btn-primary" href="/jsp/userProfile.jsp" role="button">My Books</a>
 												<a class="btn btn-primary" href="/addbook" role="button">Sell A Book</a> 
 												<a class="btn btn-primary" href="/addWish" role="button">Add To Wish List</a> </td>
 						</tr>
