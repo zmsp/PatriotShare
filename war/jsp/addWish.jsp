@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<%@ page import="com.google.appengine.api.datastore.*"%>
-
-
+<%@page import="javax.json.stream.JsonParser.Event"%>
+<%@page import="edu.gmu.mason.patriotshare.gae.db.BookInfo"%>
+<%@ page import="com.google.appengine.api.datastore.DatastoreService"%>
+<%@ page
+	import="com.google.appengine.api.datastore.DatastoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.datastore.Entity"%>
+<%@ page import="com.google.appengine.api.datastore.FetchOptions"%>
+<%@ page import="com.google.appengine.api.datastore.Key"%>
+<%@ page import="com.google.appengine.api.datastore.KeyFactory"%>
+<%@ page import="com.google.appengine.api.datastore.Query"%>
+<%@ page import="com.google.appengine.api.datastore.Transaction"%>
+<%@ page import="com.google.appengine.api.datastore.Query.Filter"%>
+<%@ page
+	import="com.google.appengine.api.datastore.Query.FilterOperator"%>
+<%@ page
+	import="com.google.appengine.api.datastore.Query.FilterPredicate"%>
+<%@ page import="java.util.List"%>
+<%@ page import="javax.json.*"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@ page import="java.io.InputStream"%>
+<%@ page import="edu.gmu.mason.patriotshare.gae.db.BookPrices"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<!-- Import library and scripts are from this file -->
 <jsp:include page="/fragments/staticFiles.jsp" />
 <%
 	//allow access only if session exists

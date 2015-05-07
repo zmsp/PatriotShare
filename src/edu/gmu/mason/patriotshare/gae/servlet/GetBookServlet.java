@@ -130,8 +130,8 @@ public class GetBookServlet extends HttpServlet {
 			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			request.setAttribute("error","No Book found with such name in the Google Database");
-			request.getRequestDispatcher("/jsp/error.jsp").forward(request, response); 
+			request.setAttribute("error","Sorry inforamtion for this book isn't available");
+			request.getRequestDispatcher("/jsp/allBook.jsp").forward(request, response); 
 		}
 		//response.sendRedirect("/jsp/allBook.jsp");
 		

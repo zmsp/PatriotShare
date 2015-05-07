@@ -35,6 +35,12 @@
 
 		<h3>Books for sale by other users:</h3>
 
+<%
+if (request.getAttribute("error")!=null)
+{%>
+<p><span style="color: red">${error}</span></p>
+<%} %>
+
 		<div>
 			<%
 				DatastoreService datastore = DatastoreServiceFactory

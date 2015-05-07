@@ -41,7 +41,6 @@
 
 		String sessionID = session.getId();
 	%>
-<<<<<<< HEAD
 	<jsp:include page="/fragments/bodyHeader.jsp" />
 
 	<div class="container-fluid">
@@ -92,56 +91,6 @@
 
 			</div>
 
-=======
-<jsp:include page="/fragments/bodyHeader.jsp" />
-
-<div class="container-fluid"> 
-<div class="col-sm-8">
-
-			<% 
-			DatastoreService datastore = null; 
-			Query query = null;
-			List<Entity> matched = null;
-			String myEmail = (String)user.getProperty("loginID");
-		
-			 datastore = DatastoreServiceFactory.getDatastoreService();
-			 %>
-			
-				
-		
-		<div class="row">
-		<h2>Books I own</h2>
-			<%
-				Filter userBooks = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
-			
-				//"User" is the entity to search
-				Query mybookquery = new Query("Book");
-
-				//Links the entity to the search filter
-				mybookquery.setFilter(userBooks);
-		
-				//Creates the list that has the search results based on the filter applied
-				//The limit should not have to be increased since we are expecting either 1 or 0 results
-				List<Entity> myBook = datastore.prepare(mybookquery).asList(FetchOptions.Builder.withLimit(100));
-				if(myBook.isEmpty()){
-			%>
-			<p>There are no books listed.</p>
-			<%
-				} else {
-			%>
-
-		
-			<table id="example2" class="display">
-				<thead>
-				<tr>
-					<th>Book Title</th>
-					<th>ISBN</th>
-					<th>Asking Price</th>
-					<th></th>
-				</tr>
-				</thead>
-				<tbody>
->>>>>>> 0d39639e76812a338c09b26a392593bdebf140ba
 				<%
 					DatastoreService datastore = null; 
 					Query query = null;
@@ -152,7 +101,6 @@
 				%>
 
 
-<<<<<<< HEAD
 
 				<div class="col-xs-12 col-sm-8">
 					<h2>Books I have for sale <a class="btn btn-success" href="/addbook" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
@@ -214,53 +162,26 @@
 					
 					</h2>
 					<%
-						Filter userWish = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
-						
-							//"User" is the entity to search
-							Query mywishquery = new Query("BookWish");
+					Filter userWish = new FilterPredicate("email", FilterOperator.EQUAL, myEmail);
+					
+					//"User" is the entity to search
+					Query mywishquery = new Query("BookWish");
 
-							//Links the entity to the search filter
-							mywishquery.setFilter(userWish);
-							
-							//Creates the list that has the search results based on the filter applied
-							//The limit should not have to be increased since we are expecting either 1 or 0 results
-							List<Entity> myWish = datastore.prepare(mywishquery).asList(FetchOptions.Builder.withLimit(100));
-							if(myBook.isEmpty()){
+					//Links the entity to the search filter
+					mybookquery.setFilter(userWish);
+					
+					//Creates the list that has the search results based on the filter applied
+					//The limit should not have to be increased since we are expecting either 1 or 0 results
+					List<Entity> myWish = datastore.prepare(mywishquery).asList(FetchOptions.Builder.withLimit(100));
+					if(myWish.isEmpty()){
+					
+					
 					%>
 					<p>There are no books listed.</p>
 					<%
 						} else {
 					%>
 
-=======
-		<div class="col-xs-4">
-			<div class="panel panel-success">
-				<div class="panel-heading">
-					<h3 class="panel-title"><%out.print(user.getProperty("firstName")); %>'s Profile</h3>
-				</div>
-				<img src="/resources/profile.jpg" alt="..."
-					class="img-circle center-block">
-				<div class="ratings">
-					<p class="pull-right">3 reviews</p>
-					<p>
-						<span class="glyphicon glyphicon-star"></span> <span
-							class="glyphicon glyphicon-star"></span> <span
-							class="glyphicon glyphicon-star"></span> <span
-							class="glyphicon glyphicon-star"></span> <span
-							class="glyphicon glyphicon-star-empty"></span> 4.0 stars
-					</p>
-				</div>
-				<ul class="list-group">
-					<li class="list-group-item text-muted" contenteditable="false">Profile</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Joined</strong></span> 2.13.2014</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Last seen</strong></span> Yesterday</li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Name</strong></span><%out.print(user.getProperty("firstName") + " " + user.getProperty("lastName")); %></li>
-					<li class="list-group-item text-right"><span class="pull-left"><strong
-							class="">Email</strong></span><%out.print(user.getProperty("loginID")); %></li>
->>>>>>> 0d39639e76812a338c09b26a392593bdebf140ba
 
 					<table id="example" class="display">
 						<thead>
