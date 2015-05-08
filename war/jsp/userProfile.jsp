@@ -168,7 +168,7 @@
 					Query mywishquery = new Query("BookWish");
 
 					//Links the entity to the search filter
-					mybookquery.setFilter(userWish);
+					mywishquery.setFilter(userWish);
 					
 					//Creates the list that has the search results based on the filter applied
 					//The limit should not have to be increased since we are expecting either 1 or 0 results
