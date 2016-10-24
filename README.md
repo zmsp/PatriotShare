@@ -1,10 +1,10 @@
 # PatriotShare
 Project Patriot Share to enable peer to peer book sharing
 
-Test Login:
-User Account: johnd@example.com
-Password: love2share
-URL: http://patriotshareapp.appspot.com
+# Test Login:
+User Account: johnd@example.com  
+Password: love2share  
+URL: http://patriotshareapp.appspot.com  
 
 Screenshots: 
 
