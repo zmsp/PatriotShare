@@ -30,8 +30,9 @@ Responsive to adapt to mobile
 ![alt text](https://github.com/zmsp/PatriotShare/blob/material/responsiveSell.PNG?raw=true "Able to pull in price information using isbndb.com API")
 
 
-# Uses Google's App Engine for hosting
-Technologies used:
+# Technologies used:
+
+* Google's App Engine for hosting
 * Boostrap
 * APIs
 * JSP/Servlet/Java
